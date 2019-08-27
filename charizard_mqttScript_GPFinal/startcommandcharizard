@@ -1,4 +1,4 @@
- node cloudiot_mqtt_example_nodejs.js \
+ node charizard_mqtt.js \
     mqttDeviceDemo \
     --projectId=glassphonix \
     --cloudRegion=us-central1 \
