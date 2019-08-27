@@ -21,7 +21,6 @@ const jwt = require('jsonwebtoken');
 const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
 const LED = new gpio(23, 'out');
-const {PubSub} = require('@google-cloud/pubsub');
 
 // [END iot_mqtt_include]
 
