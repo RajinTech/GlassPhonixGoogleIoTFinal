@@ -1,0 +1,9 @@
+ node alfred_mqtt.js \
+    mqttDeviceDemo \
+    --projectId=glassphonix \
+    --cloudRegion=us-central1 \
+    --registryId=my-registry \
+    --deviceId=alfred \
+    --privateKeyFile=rsa_private.pem \
+    --numMessages=25 \
+    --algorithm=RS256
