@@ -21,6 +21,8 @@ const jwt = require('jsonwebtoken');
 const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
 const LED = new gpio(23, 'out');
+const {PubSub} = require('@google-cloud/pubsub');
+
 // [END iot_mqtt_include]
 
 // The initial backoff time after a disconnection occurs, in seconds.
@@ -304,13 +306,13 @@ function publishAsync(
     function LEDoff () {
       LED.writeSync(0)};
     if (LED.readSync() === 0) {
-      LED.writeSync(1); 
+      LED.writeSync(1);
     } else {
       LED.writeSync(0);}
-    
-    
-    
-    
+
+
+
+
     console.log('Publishing message:', payload);
     client.publish(mqttTopic, payload, {qos: 1}, err => {
       if (!err) {
