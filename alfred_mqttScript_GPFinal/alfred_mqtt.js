@@ -304,7 +304,7 @@ function publishAsync(
     LEDtoggle = 'off'
   };
   setTimeout(() => {
-    const payload = `${argv.registryId}/${argv.deviceId}-payload-${messagesSent}-${LEDtoggle}`;
+    const payload = `${argv.registryId}/${argv.deviceId}-payload-${messagesSent}-${messageCounter}-${LEDtoggle}`;
 
     // Publish "payload" to the MQTT topic. qos=1 means at least once delivery.
     // Cloud IoT Core also supports qos=0 for at most once delivery.
@@ -523,7 +523,7 @@ function mqttDeviceDemo(
     let LEDcommand = '';
     if ((message.data.toString()).endsWith('off')){
       LEDcommand = 'off'
-    } else {
+    } else if ((message.data.toString()).endsWith('on')) {
       LEDcommand = 'on'
     };
     console.log(`\tLEDcommand: ${LEDcommand}`);
