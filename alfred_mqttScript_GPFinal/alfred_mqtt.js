@@ -297,7 +297,7 @@ function publishAsync(
   }
   let messageCounter = 1;
   let LEDtoggle = 'off';
-  messageCounter ++ 1;
+  messageCounter += 1;
   if (messageCounter % 2 == 0) {
     LEDtoggle = 'on'
   } else {
