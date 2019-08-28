@@ -521,7 +521,7 @@ function mqttDeviceDemo(
   let messageCount = 0;
   const messageHandler = message => {
     let LEDcommand = '';
-    if (message.data.endsWith('off')){
+    if ((message.data.toString()).endsWith('off')){
       LEDcommand = 'off'
     } else {
       LEDcommand = 'on'
