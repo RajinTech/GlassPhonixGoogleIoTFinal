@@ -295,10 +295,10 @@ function publishAsync(
     backoffTime *= 2;
     console.log(`Backing off for ${publishDelayMs}ms before publishing.`);
   }
-  let messageCount = 1;
+  let messageCounter = 1;
   let LEDtoggle = 'off';
   messageCount ++ 1;
-  if (messageCount % 2 == 0) {
+  if (messageCounter % 2 == 0) {
     LEDtoggle = 'on'
   } else {
     LEDtoggle = 'off'
