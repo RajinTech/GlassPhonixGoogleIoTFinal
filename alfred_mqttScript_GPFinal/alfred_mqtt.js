@@ -19,8 +19,8 @@
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const mqtt = require('mqtt');
-//const gpio = require('onoff').Gpio;
-//const LED = new gpio(23, 'out');
+const gpio = require('onoff').Gpio;
+const LED = new gpio(23, 'out');
 const {PubSub} = require('@google-cloud/pubsub');
 
 // [END iot_mqtt_include]
@@ -306,14 +306,7 @@ function publishAsync(
 
     // Publish "payload" to the MQTT topic. qos=1 means at least once delivery.
     // Cloud IoT Core also supports qos=0 for at most once delivery.
-    //function LEDon () {
-    //  LED.writeSync(1)};
-    //function LEDoff () {
-    //  LED.writeSync(0)};
-    //if (LED.readSync() === 0) {
-    //  LED.writeSync(1);
-    //} else {
-    //  LED.writeSync(0);}
+
 
 
 
@@ -524,6 +517,10 @@ function mqttDeviceDemo(
     } else if ((message.data.toString()).endsWith('on')) {
       LEDcommand = 'on'
     };
+    if (LEDcommand === 'on') {
+      LED.writeSync(1);
+    } else if (LEDcommand === 'off') {
+      LED.writeSync(0);}
     console.log(`\tLEDcommand: ${LEDcommand}`);
 
     console.log(`Received message ${message.id}:`);
