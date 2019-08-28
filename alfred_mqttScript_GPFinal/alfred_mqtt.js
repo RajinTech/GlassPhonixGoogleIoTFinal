@@ -513,6 +513,7 @@ function mqttDeviceDemo(
   // Create an event handler to handle messages
   let messageCount = 0;
   const messageHandler = message => {
+    message.attributes += Buffer.from(message, 'base64').toString('ascii');
     console.log(`Received message ${message.id}:`);
     console.log(`\tData: ${message.data}`);
     console.log(`\tAttributes: ${message.attributes}`);
