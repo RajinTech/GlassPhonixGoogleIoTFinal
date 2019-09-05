@@ -1,0 +1,66 @@
+<html>
+<head>
+  <title>Express HTML</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div style="margin:100px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Create a Move</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron"  style="padding:40px;">
+      <h1>Setup commands</h1>
+      <p>Command your shop</p>
+      <form action='/api/actions' method='POST'>
+        <div>
+          <label for="name"> Who is this command for?</label><br>
+          <input type="radio" name="name" value="Option1"> Charizard <br>
+          <input type="radio" name="name" value="Option2"> Brian<br>
+          <input type="radio" name="name" value="Option1"> Alfred <br>
+          <input type="radio" name="name" value="Option2"> Preston<br>
+          <input type="radio" name="name" value="Option1"> Milhouse <br>
+          <input type="radio" name="name" value="Option2"> Hans<br>
+          <input type="radio" name="name" value="Option1"> Taylor <br>
+          <input type="radio" name="name" value="Option2"> Gloria<br>
+        </div>
+        <div>
+          <p>
+            Alfred
+          </p>
+          <input type="radio" name="led" value="Option1"> LED ON <br>
+          <input type="radio" name="led" value="Option2"> LED OFF
+        </div>
+        <div>
+          <p>
+            Charizard?
+          </p>
+          <input type="range" min='0' max='1000' value="0" > Inner Oxy <br>
+          <input type="range" min='0' max='1000' value="0" > Inner Prop <br>
+          <input type="range" min='0' max='1000' value="0" > Outer Oxy <br>
+          <input type="range" min='0' max='1000' value="0" > Outer Prop <br>
+
+        </div>
+        <div>
+          <p>
+            Voice Trigger
+          </p>
+          <input type="text" name="led" value="ON"> Command Text <br>
+          <input type="submit" value="Submit"> Submit
+        </div>
+
+      </form>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn More</a></p>
+    </div>
+  </div>
+</body>
+</html>
