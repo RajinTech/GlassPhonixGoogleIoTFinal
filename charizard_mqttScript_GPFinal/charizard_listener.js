@@ -47,10 +47,12 @@ function  charizardListener(
 
   function pulse(insidePropanecommand) {
     setTimeout(function(){
-      insidePropane.writeSync(1)
+      insidePropane.writeSync(1);
+      console.log(`on`);
     }, 1000);
     setTimeout(function(){
-      insidePropane.writeSync(0)
+      console.log(`off`);
+      insidePropane.writeSync(0);
     }, 1000);
   }
   pulse(insidePropanecommand);
