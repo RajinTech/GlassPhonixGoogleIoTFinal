@@ -47,14 +47,14 @@ function  charizardListener(
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
   function pulse(insidePropanecommand) {
-      let n = 62
+      let n = parseInt(insidePropanecommand, 10)/2;
       insidePropane.writeSync(1);
       sleep.msleep(n);
       insidePropane.writeSync(0);
       sleep.msleep(n);
   };
 
-  let sleepPeriod = 80;
+  let sleepPeriod = 200;
 
   for(var i = 0; i < sleepPeriod; i++){
     pulse(insidePropanecommand);
