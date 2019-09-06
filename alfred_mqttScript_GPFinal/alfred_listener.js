@@ -25,7 +25,7 @@ const LED = new gpio(23, 'out');
 
 
 const projectId = 'glassphonix'
-const deviceId = `alfred`;
+
 const registryId = `my-registry`;
 const region = `us-central1`;
 const algorithm = `RS256`;
@@ -75,7 +75,7 @@ function createJwt(projectId, privateKeyFile, algorithm) {
 
 
 function alfredListener(
-  deviceId,
+
   registryId,
   projectId,
   region,
@@ -153,7 +153,7 @@ function alfredListener(
 }
 
 alfredListener(
-  deviceId,
+
   registryId,
   projectId,
   region,
