@@ -73,130 +73,8 @@ function createJwt(projectId, privateKeyFile, algorithm) {
 }
 // [END iot_mqtt_jwt]
 
-// Publish numMessages messages asynchronously, starting from message
-// messagesSent.
-// [START iot_mqtt_publish]
-function publishAsync(
-  mqttTopic,
-  client,
-  iatTime,
-  messagesSent,
-  numMessages,
-  connectionArgs
-) {
-  // If we have published enough messages or backed off too many times, stop.
-  if (messagesSent > numMessages || backoffTime >= MAXIMUM_BACKOFF_TIME) {
-    if (backoffTime >= MAXIMUM_BACKOFF_TIME) {
-      console.log('Backoff time is too high. Giving up.');
-    }
-    console.log('Closing connection to MQTT. Goodbye!');
-    client.end();
-    publishChainInProgress = false;
-    return;
-  }
 
-  // Publish and schedule the next publish.
-  publishChainInProgress = true;
-  let publishDelayMs = 0;
-  if (shouldBackoff) {
-    publishDelayMs = 1000 * (backoffTime + Math.random());
-    backoffTime *= 2;
-    console.log(`Backing off for ${publishDelayMs}ms before publishing.`);
-  }
-  let LEDtoggle = 'off';
-  if (messagesSent % 2 == 0) {
-    LEDtoggle = 'off'
-  } else {
-    LEDtoggle = 'off'
-  };
-  setTimeout(() => {
-    const payload = `${registryId}/${deviceId}-payload-${messagesSent}-${LEDtoggle}`;
-
-    // Publish "payload" to the MQTT topic. qos=1 means at least once delivery.
-    // Cloud IoT Core also supports qos=0 for at most once delivery.
-
-
-
-
-
-    console.log('Publishing message:', payload);
-    client.publish(mqttTopic, payload, {qos: 1}, err => {
-      if (!err) {
-        shouldBackoff = false;
-        backoffTime = MINIMUM_BACKOFF_TIME;
-      }
-    });
-
-    const schedulePublishDelayMs = messageType === 'events' ? 1000 : 2000;
-    setTimeout(() => {
-      // [START iot_mqtt_jwt_refresh]
-      const secsFromIssue = parseInt(Date.now() / 1000) - iatTime;
-      if (secsFromIssue > tokenExpMins * 60) {
-        iatTime = parseInt(Date.now() / 1000);
-        console.log(`\tRefreshing token after ${secsFromIssue} seconds.`);
-
-        client.end();
-        connectionArgs.password = createJwt(
-          projectId,
-          privateKeyFile,
-          algorithm
-        );
-        connectionArgs.protocolId = 'MQTT';
-        connectionArgs.protocolVersion = 4;
-        connectionArgs.clean = true;
-        client = mqtt.connect(connectionArgs);
-        // [END iot_mqtt_jwt_refresh]
-
-        client.on('connect', success => {
-          console.log('connect');
-          if (!success) {
-            console.log('Client not connected...');
-          } else if (!publishChainInProgress) {
-            publishAsync(
-              mqttTopic,
-              client,
-              iatTime,
-              messagesSent,
-              numMessages,
-              connectionArgs
-            );
-          }
-        });
-
-        client.on('close', () => {
-          console.log('close');
-          shouldBackoff = true;
-        });
-
-        client.on('error', err => {
-          console.log('error', err);
-        });
-
-        client.on('message', (topic, message) => {
-          console.log(
-            'message received: ',
-            Buffer.from(message, 'base64').toString('ascii')
-          );
-        });
-
-        client.on('packetsend', () => {
-          // Note: logging packet send is very verbose
-        });
-      }
-      publishAsync(
-        mqttTopic,
-        client,
-        iatTime,
-        messagesSent + 1,
-        numMessages,
-        connectionArgs
-      );
-    }, schedulePublishDelayMs);
-  }, publishDelayMs);
-}
-// [END iot_mqtt_publish]
-
-function mqttDeviceDemo(
+function alfredListener(
   deviceId,
   registryId,
   projectId,
@@ -233,16 +111,11 @@ function mqttDeviceDemo(
   const iatTime = parseInt(Date.now() / 1000);
   const client = mqtt.connect(connectionArgs);
 
-  // Subscribe to the /devices/{device-id}/config topic to receive config updates.
-  // Config updates are recommended to use QoS 1 (at least once delivery)
-  client.subscribe(`/devices/${deviceId}/config`, {qos: 1});
+
+
   client.subscribe(`/devices/${deviceId}`, {qos: 1});
 
-  // Subscribe to the /devices/{device-id}/commands/# topic to receive all
-  // commands or to the /devices/{device-id}/commands/<subfolder> to just receive
-  // messages published to a specific commands folder; we recommend you use
-  // QoS 0 (at most once delivery)
-  client.subscribe(`/devices/${deviceId}/commands/#`, {qos: 0});
+
 
   // The MQTT topic that this device will publish data to. The MQTT topic name is
   // required to be in the format below. The topic name must end in 'state' to
@@ -316,7 +189,7 @@ function mqttDeviceDemo(
   // [END iot_mqtt_run]
 }
 
-mqttDeviceDemo(
+alfredListener(
   deviceId,
   registryId,
   projectId,
