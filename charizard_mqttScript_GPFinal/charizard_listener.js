@@ -42,6 +42,14 @@ function  charizardListener(
     let ip = message.data.toString();
     let insidePropanecommand = ip.substr(32, 2);
 
+    // Toggle the state of the LED connected to GPIO17 every 200ms
+    const iv = setInterval(_ => insidePropane.writeSync(insidePropane.readSync() ^ 1), 200);
+
+    // Stop blinking the LED after 5 seconds
+    setTimeout(_ => {
+      clearInterval(iv); // Stop blinking
+      insidePropane.unexport();    // Unexport GPIO and free resources
+    }, 5000);
 
 
 
