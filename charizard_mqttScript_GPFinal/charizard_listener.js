@@ -39,7 +39,7 @@ function  charizardListener(
   // Create an event handler to handle messages
   let messageCount = 0;
   const messageHandler = message => {
-    let ip = message.data.toDateString();
+    let ip = message.data.toString();
     let insidePropanecommand = ip.substr('IP', 2);
 
 
