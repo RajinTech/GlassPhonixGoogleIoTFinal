@@ -266,7 +266,7 @@ router.post(
         }
 
         setTimeout(() => {
-          const payload = `${registryId}/${deviceId}-payload-savedData-${savedData.led}`;
+          const payload = `${registryId}/${deviceId}-payload-IP${savedData.insidePropane}-alfredData-${savedData.led}`;
 
           // Publish "payload" to the MQTT topic. qos=1 means at least once delivery.
           // Cloud IoT Core also supports qos=0 for at most once delivery.

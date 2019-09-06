@@ -39,16 +39,22 @@ function  charizardListener(
   // Create an event handler to handle messages
   let messageCount = 0;
   const messageHandler = message => {
-    let insidePropanecommand = '';
-    if ((message.data.toString()).endsWith('off')){
-      insidePropanecommand = 'off'
-    } else if ((message.data.toString()).endsWith('on')) {
-      insidePropanecommand = 'on'
-    };
-    if (insidePropanecommand === 'on') {
-      insidePropane.writeSync(1);
-    } else if (insidePropanecommand === 'off') {
-      insidePropane.writeSync(0);}
+    let ip = message.data.toDateString();
+    let insidePropanecommand = ip.substr('IP', 2);
+
+
+
+
+
+    // if ((message.data.toString()).endsWith('off')){
+    //   insidePropanecommand = 'off'
+    // } else if ((message.data.toString()).endsWith('on')) {
+    //   insidePropanecommand = 'on'
+    // };
+    // if (insidePropanecommand === 'on') {
+    //   insidePropane.writeSync(1);
+    // } else if (insidePropanecommand === 'off') {
+    //   insidePropane.writeSync(0);}
     console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
 
     console.log(`Received message ${message.id}:`);
