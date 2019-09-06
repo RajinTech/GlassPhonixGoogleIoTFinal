@@ -49,16 +49,20 @@ function  charizardListener(
     setTimeout(function(){
       insidePropane.writeSync(1);
       console.log(`on`);
-    }, 1);
+    }, 100);
     setTimeout(function(){
       console.log(`off`);
       insidePropane.writeSync(0);
-    }, 2);
+    }, 200);
   }
 
-  let sleepPeriod = 10000;
-  for(var i = 0; i < sleepPeriod; i++){
+let in = true;
+
+do{
     pulse(insidePropanecommand);
+  }
+  while(in);
+
   }
 
 
