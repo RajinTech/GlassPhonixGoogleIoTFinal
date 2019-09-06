@@ -53,6 +53,7 @@ function  charizardListener(
       insidePropane.writeSync(0)
     }, 1000);
   }
+  pulse(insidePropanecommand);
 
 
 
