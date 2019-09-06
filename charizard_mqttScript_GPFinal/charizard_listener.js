@@ -21,7 +21,10 @@ const fs = require('fs');
 const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
 const {PubSub} = require('@google-cloud/pubsub');
-const LED = new gpio(27, 'out');
+const outsidePropane = new gpio(23, 'out');
+const outsideOxygen = new gpio(24, 'out');
+const insideOxygen = new gpio(25, 'out');
+const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
@@ -36,24 +39,24 @@ function  charizardListener(
   // Create an event handler to handle messages
   let messageCount = 0;
   const messageHandler = message => {
-    let LEDcommand = '';
+    let insidePropanecommand = '';
     if ((message.data.toString()).endsWith('off')){
-      LEDcommand = 'off'
+      insidePropanecommand = 'off'
     } else if ((message.data.toString()).endsWith('on')) {
-      LEDcommand = 'on'
+      insidePropanecommand = 'on'
     };
-    if (LEDcommand === 'on') {
-      LED.writeSync(1);
-    } else if (LEDcommand === 'off') {
-      LED.writeSync(0);}
-    console.log(`\tLEDcommand: ${LEDcommand}`);
+    if (insidePropanecommand === 'on') {
+      insidePropane.writeSync(1);
+    } else if (insidePropanecommand === 'off') {
+      insidePropane.writeSync(0);}
+    console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
 
     console.log(`Received message ${message.id}:`);
     console.log(`\tData: ${message.data}`);
     console.log(`\tAttributes: ${message.attributes}`);
     messageCount += 1;
 
-    // "Ack" (acknowledge receipt of) the message
+    // "Ack" (acknowinsidePropanege receipt of) the message
     message.ack();
   };
 
