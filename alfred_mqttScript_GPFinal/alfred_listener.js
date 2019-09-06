@@ -86,43 +86,6 @@ function alfredListener(
   messageType,
   numMessages
 ) {
-  // [START iot_mqtt_run]
-
-
-  // The mqttClientId is a unique string that identifies this device. For Google
-  // Cloud IoT Core, it must be in the format below.
-  const mqttClientId = `projects/${projectId}/locations/${region}/registries/${registryId}/devices/${deviceId}`;
-
-  // With Google Cloud IoT Core, the username field is ignored, however it must be
-  // non-empty. The password field is used to transmit a JWT to authorize the
-  // device. The "mqtts" protocol causes the library to connect using SSL, which
-  // is required for Cloud IoT Core.
-  const connectionArgs = {
-    host: mqttBridgeHostname,
-    port: mqttBridgePort,
-    clientId: mqttClientId,
-    username: 'unused',
-    password: createJwt(projectId, privateKeyFile, algorithm),
-    protocol: 'mqtts',
-    secureProtocol: 'TLSv1_2_method',
-  };
-
-  // Create a client, and connect to the Google MQTT bridge.
-  const iatTime = parseInt(Date.now() / 1000);
-  const client = mqtt.connect(connectionArgs);
-
-
-
-  client.subscribe(`/devices/${deviceId}`, {qos: 1});
-
-
-
-  // The MQTT topic that this device will publish data to. The MQTT topic name is
-  // required to be in the format below. The topic name must end in 'state' to
-  // publish state and 'events' to publish telemetry. Note that this is not the
-  // same as the device registry's Cloud Pub/Sub topic.
-  const mqttTopic = `/devices/${deviceId}/${messageType}`;
-
 
 
 
