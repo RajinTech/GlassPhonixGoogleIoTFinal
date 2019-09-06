@@ -27,7 +27,16 @@ block content
       input.form-control(type="text", name="author", id="author", value=book.author)
     .form-group
       label(for="insidePropane") Inside Propane
-      input.form-control(type="range", min='0', max='99' name="insidePropane", id="insidePropane", value=book.insidePropane)
+      input.form-control(type="text", name="insidePropane", id="insidePropane", value=book.insidePropane)
+    .form-group
+      label(for="insideOxygen") Inside Oxygen
+      input.form-control(type="range", min='0', max='99' name="insideOxygen", id="insideOxygen", value=book.insideOxygen)
+    .form-group
+      label(for="outsidePropane") Outside Propane
+      input.form-control(type="range", min='0', max='99' name="outsidePropane", id="outsidePropane", value=book.outsidePropane)
+    .form-group
+      label(for="outsideOxygen") Outside Oxygen
+      input.form-control(type="range", min='0', max='99' name="outsideOxygen", id="outsideOxygen", value=book.outsideOxygen)
     .form-group
       label(for="publishedDate") Date Published
       input.form-control(type="text", name="publishedDate", id="publishedDate", value=book.publishedDate)
