@@ -56,7 +56,7 @@ function  charizardListener(
     }, 200);
   }
 
-let in = true;
+var in = true;
 
 do{
     pulse(insidePropanecommand);
