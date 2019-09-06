@@ -23,6 +23,18 @@ const gpio = require('onoff').Gpio;
 const {PubSub} = require('@google-cloud/pubsub');
 const LED = new gpio(23, 'out');
 
+
+
+const deviceId = `alfred`;
+const registryId = `my-registry`;
+const region = `us-central1`;
+const algorithm = `RS256`;
+const privateKeyFile = `rsa_private.pem`;
+const mqttBridgeHostname = `mqtt.googleapis.com`;
+const mqttBridgePort = 8883;
+const messageType = `events`;
+const numMessages = 5;
+const tokenExpMins = 20;
 // [END iot_mqtt_include]
 
 // The initial backoff time after a disconnection occurs, in seconds.
@@ -198,16 +210,6 @@ function mqttDeviceDemo(
 ) {
   // [START iot_mqtt_run]
 
-   const deviceId = `alfred`;
-   const registryId = `my-registry`;
-   const region = `us-central1`;
-   const algorithm = `RS256`;
-   const privateKeyFile = `rsa_private.pem`;
-   const mqttBridgeHostname = `mqtt.googleapis.com`;
-   const mqttBridgePort = 8883;
-   const messageType = `events`;
-   const numMessages = 5;
-   const tokenExpMins = 20;
 
   // The mqttClientId is a unique string that identifies this device. For Google
   // Cloud IoT Core, it must be in the format below.
