@@ -24,7 +24,7 @@ const {PubSub} = require('@google-cloud/pubsub');
 const LED = new gpio(23, 'out');
 
 
-
+const projectId = 'glassphonix'
 const deviceId = `alfred`;
 const registryId = `my-registry`;
 const region = `us-central1`;
