@@ -49,13 +49,17 @@ function  charizardListener(
     setTimeout(function(){
       insidePropane.writeSync(1);
       console.log(`on`);
-    }, 1000);
+    }, 1);
     setTimeout(function(){
       console.log(`off`);
       insidePropane.writeSync(0);
-    }, 3000);
+    }, 3);
   }
-  pulse(insidePropanecommand);
+
+  let sleepPeriod = 5000;
+  for(var i = 0; i < sleepPeriod; i++){
+    pulse(insidePropanecommand);
+  }
 
 
 
