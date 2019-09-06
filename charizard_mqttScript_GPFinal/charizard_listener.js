@@ -53,7 +53,7 @@ function  charizardListener(
     setTimeout(function(){
       console.log(`off`);
       insidePropane.writeSync(0);
-    }, 1000);
+    }, 3000);
   }
   pulse(insidePropanecommand);
 
