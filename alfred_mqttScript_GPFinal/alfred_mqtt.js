@@ -43,11 +43,6 @@ let publishChainInProgress = false;
 console.log('Google Cloud IoT Core MQTT example.');
 
 
-  .wrap(120)
-  .recommendCommands()
-  .epilogue(`For more information, see https://cloud.google.com/iot-core/docs`)
-  .help()
-  .strict();
 
 // Create a Cloud IoT Core JWT for the given project id, signed with the given
 // private key.
