@@ -40,7 +40,7 @@ function  charizardListener(
   let messageCount = 0;
   const messageHandler = message => {
     let ip = message.data.toString();
-    let insidePropanecommand = ip.substr(30, 2);
+    let insidePropanecommand = ip.substr(32, 2);
 
 
 
