@@ -26,6 +26,7 @@ const outsideOxygen = new gpio(24, 'out');
 const insideOxygen = new gpio(25, 'out');
 const insidePropane = new gpio(27, 'out');
 
+
 console.log('Welcome! I am listening!');
 
 function  charizardListener(
@@ -41,7 +42,7 @@ function  charizardListener(
   const messageHandler = message => {
 
     let ip = message.data.toString();
-    let insidePropanecommand = ip.substr(32, 2);
+    const insidePropanecommand = ip.substr(32, 2);
 
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
