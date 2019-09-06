@@ -20,6 +20,7 @@ const fs = require('fs');
 
 const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
+const sleep = require('sleep');
 const {PubSub} = require('@google-cloud/pubsub');
 const outsidePropane = new gpio(23, 'out');
 const outsideOxygen = new gpio(24, 'out');
@@ -46,12 +47,11 @@ function  charizardListener(
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
   function pulse(insidePropanecommand) {
-    insidePropane.writeSync(1);
-    console.log(`on`);
-    setTimeout(function(){
+      let n = 500
+      insidePropane.writeSync(1);
+      sleep.msleep(n);
       insidePropane.writeSync(0);
-      console.log(`off`);
-    }, 100);
+      sleep.msleep(n);
   };
 
   let sleepPeriod = 10000;
