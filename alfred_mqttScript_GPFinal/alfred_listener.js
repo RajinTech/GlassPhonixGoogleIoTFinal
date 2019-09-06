@@ -24,35 +24,10 @@ const {PubSub} = require('@google-cloud/pubsub');
 const LED = new gpio(23, 'out');
 
 
-const projectId = 'glassphonix'
 
-const registryId = `my-registry`;
-const region = `us-central1`;
-const algorithm = `RS256`;
-const privateKeyFile = `rsa_private.pem`;
-const mqttBridgeHostname = `mqtt.googleapis.com`;
-const mqttBridgePort = 8883;
-const messageType = `events`;
-const numMessages = 5;
-const tokenExpMins = 20;
-// [END iot_mqtt_include]
 
-// The initial backoff time after a disconnection occurs, in seconds.
-const MINIMUM_BACKOFF_TIME = 1;
 
-// The maximum backoff time before giving up, in seconds.
-const MAXIMUM_BACKOFF_TIME = 32;
-
-// Whether to wait with exponential backoff before publishing.
-let shouldBackoff = false;
-
-// The current backoff time.
-let backoffTime = 1;
-
-// Whether an asynchronous publish chain is in progress.
-let publishChainInProgress = false;
-
-console.log('Google Cloud IoT Core MQTT example.');
+console.log('Welcome! I am listening!');
 
 
 
@@ -76,15 +51,7 @@ function createJwt(projectId, privateKeyFile, algorithm) {
 
 function alfredListener(
 
-  registryId,
-  projectId,
-  region,
-  algorithm,
-  privateKeyFile,
-  mqttBridgeHostname,
-  mqttBridgePort,
-  messageType,
-  numMessages
+
 ) {
 
 
@@ -154,13 +121,5 @@ function alfredListener(
 
 alfredListener(
 
-  registryId,
-  projectId,
-  region,
-  algorithm,
-  privateKeyFile,
-  mqttBridgeHostname,
-  mqttBridgePort,
-  messageType,
-  numMessages
+
 );
