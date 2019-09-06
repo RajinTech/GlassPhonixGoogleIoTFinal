@@ -54,7 +54,7 @@ function  charizardListener(
       sleep.msleep(n);
   };
 
-  let sleepPeriod = 10000;
+  let sleepPeriod = 20;
 
   for(var i = 0; i < sleepPeriod; i++){
     pulse(insidePropanecommand);
