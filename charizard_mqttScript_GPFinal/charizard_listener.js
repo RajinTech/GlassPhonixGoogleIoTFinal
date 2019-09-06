@@ -53,18 +53,18 @@ function  charizardListener(
     setTimeout(function(){
       console.log(`off`);
       insidePropane.writeSync(0);
-    }, 200);
+    }, 300);
   }
 
-var in = true;
+  let sleepPeriod = 10000;
 
-do{
+  for(var i = 0; i < sleepPeriod; i++){
     pulse(insidePropanecommand);
   }
-  while(in);
 
-  }
-
+  //do{
+  //pulse(insidePropanecommand);}
+// while(on);
 
 
     // if ((message.data.toString()).endsWith('off')){
