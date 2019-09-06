@@ -17,7 +17,7 @@
 
 // [START iot_mqtt_include]
 const fs = require('fs');
-const jwt = require('jsonwebtoken');
+
 const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
 const {PubSub} = require('@google-cloud/pubsub');
@@ -28,26 +28,6 @@ const LED = new gpio(23, 'out');
 
 
 console.log('Welcome! I am listening!');
-
-
-
-// Create a Cloud IoT Core JWT for the given project id, signed with the given
-// private key.
-// [START iot_mqtt_jwt]
-function createJwt(projectId, privateKeyFile, algorithm) {
-  // Create a JWT to authenticate this device. The device will be disconnected
-  // after the token expires, and will have to reconnect with a new token. The
-  // audience field should always be set to the GCP project id.
-  const token = {
-    iat: parseInt(Date.now() / 1000),
-    exp: parseInt(Date.now() / 1000) + 20 * 60, // 20 minutes
-    aud: projectId,
-  };
-  const privateKey = fs.readFileSync(privateKeyFile);
-  return jwt.sign(token, privateKey, {algorithm: algorithm});
-}
-// [END iot_mqtt_jwt]
-
 
 function alfredListener(
 
