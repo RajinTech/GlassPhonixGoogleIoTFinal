@@ -23,34 +23,12 @@ const gpio = require('onoff').Gpio;
 const {PubSub} = require('@google-cloud/pubsub');
 const LED = new gpio(23, 'out');
 
-
-
-
-
 console.log('Welcome! I am listening!');
 
 function alfredListener(
-
-
 ) {
-
-
-
-
-
-
-
-
-
-
     // Creates a client
   const pubsub = new PubSub();
-
-  /**
-   * TODO(developer): Uncomment the following lines to run the sample.
-   */
-  // const subscriptionName = 'my-sub';
-  // const timeout = 60;
 
   // References an existing subscription
   const subscription = pubsub.subscription("my-subscription");
@@ -81,25 +59,7 @@ function alfredListener(
 
   // Listen for new messages until timeout is hit
   subscription.on(`message`, messageHandler);
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Once all of the messages have been published, the connection to Google Cloud
-  // IoT will be closed and the process will exit. See the publishAsync method.
   // [END iot_mqtt_run]
 }
 
-alfredListener(
-
-
-);
+alfredListener();
