@@ -20,8 +20,8 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
-const LED = new gpio(23, 'out');
 const {PubSub} = require('@google-cloud/pubsub');
+const LED = new gpio(23, 'out');
 
 // [END iot_mqtt_include]
 
@@ -297,7 +297,7 @@ function publishAsync(
   }
   let LEDtoggle = 'off';
   if (messagesSent % 2 == 0) {
-    LEDtoggle = 'on'
+    LEDtoggle = 'off'
   } else {
     LEDtoggle = 'off'
   };

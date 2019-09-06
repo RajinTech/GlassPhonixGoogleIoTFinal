@@ -130,6 +130,8 @@ function listBy(userId, limit, token, cb) {
 // queued for background processing.
 // [START update]
 function update(id, data, queueBook, cb) {
+  console.log(`books function update data`);
+
   let key;
   if (id) {
     key = ds.key([kind, parseInt(id, 10)]);

@@ -46,6 +46,7 @@ router.get('/', (req, res, next) => {
  * Create a new book.
  */
 router.post('/', (req, res, next) => {
+  console.log(`books api router post body`);
   model.create(req.body, true, (err, entity) => {
     if (err) {
       next(err);

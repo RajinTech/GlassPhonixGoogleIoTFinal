@@ -57,14 +57,17 @@ app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(require('./lib/oauth2').router);
-
+app.use(express.static(path.join(__dirname, 'views')));
 // Books
 app.use('/books', require('./books/crud'));
+app.use('/actions', require('./actions/crud'));
 app.use('/api/books', require('./books/api'));
-
-// Redirect root to /books
+app.use('/api/actions', require('./actions/api'));
+// Alfred
+app.use('/alfred', require('./alfred/crud'));
+// Set Homepage
 app.get('/', (req, res) => {
-  res.redirect('/books');
+  res.sendFile(path.join(__dirname, '/views/home/', 'home.html'));
 });
 
 // Add the error logger after all middleware and routes so that
