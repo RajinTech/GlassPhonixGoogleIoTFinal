@@ -14,11 +14,11 @@
 extends ../base.pug
 
 block content
-  h3 Books
+  h3 Actions
 
   a(href="/books/add", class='btn btn-success btn-sm')
     i.glyphicon.glyphicon-plus
-    span  Add book
+    span  Create Action
 
   each book in books
     .media
@@ -27,11 +27,18 @@ block content
             img(src=book.imageUrl || "http://placekitten.com/g/128/192")
         .media-body
           h4= book.title
-          p= book.author
+          p= book.createdBy 
+          p= book.device
           p= book.led
+          p= book.insidePropane
+          p= book.insideOxygen
+          p= book.outsideOxygen
+          p= book.outsidePropane
+          p= book.leftDoorPosition
+          p= book.rightDoorPosition
 
   if !books.length
-    p No books found.
+    p No actions found.
 
   if nextPageToken
     nav

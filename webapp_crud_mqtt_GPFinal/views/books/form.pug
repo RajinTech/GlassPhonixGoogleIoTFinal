@@ -17,26 +17,86 @@ block content
   h3 #{action} book
   form(method="POST", enctype="multipart/form-data")
     .form-group
-      label(for="title") Title
+      label(for="title") Verbal Command
       input.form-control(type="text", name="title", id="title", value=book.title)
+
     .form-group
-      label(for="Led") Led
+      label(for="led") Device
+      h6 Alfred
+      input.form-control(type="radio", name="device", id="device", value='alfred')
+      h6 Charizard
+      input.form-control(type="radio", name="device", id="device", value='charizard')
+      h6 Gloria
+      input.form-control(type="radio", name="device", id="device", value='gloria')
+      h3 Alfred
+    .form-group
+      label(for="led") Led
       input.form-control(type="text", name="led", id="led", value=book.led)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      h3 Charizard
+    .form-group
+      label(for="insidePropane") Inside Propane
+      input.form-control(type="range", min='0', max='99', onchange='test()', name="insidePropane", id="insidePropane", value=book.insidePropane)
+
+    .form-group
+      label(for="insideOxygen") Inside Oxygen
+      input.form-control(type="range", min='0', max='99', onchange='number()', name="insideOxygen", id="insideOxygen", value=book.insideOxygen)
+
+    .form-group
+      label(for="outsidePropane") Outside Propane
+      input.form-control(type="range", min='0', max='99', name="outsidePropane", id="outsidePropane", value=book.outsidePropane)
+
+    .form-group
+      label(for="outsideOxygen") Outside Oxygen
+      input.form-control(type="range", min='0', max='99', name="outsideOxygen", id="outsideOxygen", value=book.outsideOxygen)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      h3 Gloria
+    .form-group
+      label(for="leftDoorPosition") Left Door Position
+      input.form-control(type="range", name="leftDoorPosition", id="leftDoorPosition", value=book.leftDoorPosition)
+    .form-group
+      label(for="rightDoorPosition") Right Door Position
+      input.form-control(type="range", name="rightDoorPosition", id="rightDoorPosition", value=book.rightDoorPosition)
+      h3 Extras
     .form-group
       label(for="author") Author
       input.form-control(type="text", name="author", id="author", value=book.author)
-    .form-group
-      label(for="insidePropane") Inside Propane
-      input.form-control(type="text", name="insidePropane", id="insidePropane", value=book.insidePropane)
-    .form-group
-      label(for="insideOxygen") Inside Oxygen
-      input.form-control(type="range", min='0', max='99' name="insideOxygen", id="insideOxygen", value=book.insideOxygen)
-    .form-group
-      label(for="outsidePropane") Outside Propane
-      input.form-control(type="range", min='0', max='99' name="outsidePropane", id="outsidePropane", value=book.outsidePropane)
-    .form-group
-      label(for="outsideOxygen") Outside Oxygen
-      input.form-control(type="range", min='0', max='99' name="outsideOxygen", id="outsideOxygen", value=book.outsideOxygen)
     .form-group
       label(for="publishedDate") Date Published
       input.form-control(type="text", name="publishedDate", id="publishedDate", value=book.publishedDate)
@@ -56,3 +116,6 @@ block content
       label(for="createdById") Created by ID
       input.form-control(type="text", name="createdById", id="createdById", value=book.createdById)
     button.btn.btn-success(type="submit") Save
+
+    script(type='text/javascript' src='../functions.js')
+    script(type='text/javascript' src='../pubsub.js')

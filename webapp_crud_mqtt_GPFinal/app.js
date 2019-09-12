@@ -65,6 +65,8 @@ app.use('/api/books', require('./books/api'));
 app.use('/api/actions', require('./actions/api'));
 // Alfred
 app.use('/alfred', require('./alfred/crud'));
+app.use('/charizard', require('./charizard/crud'));
+app.use('/gloria', require('./gloria/crud'));
 // Set Homepage
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/home/', 'home.html'));
