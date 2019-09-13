@@ -30,8 +30,10 @@ class Form extends Component {
   handleChange(event) {
     console.log(`eventname: ${event.target.name}`)
     console.log(`eventvalue: ${event.target.value}`)
+    console.log(this.state.date)
   this.setState({
-    [event.target.name]: event.target.value
+    [event.target.name]: event.target.value,
+    date: Date()
     })
     let formPayload = this.state;
     fetch('api/books', {

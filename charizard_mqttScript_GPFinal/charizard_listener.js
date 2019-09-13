@@ -49,6 +49,11 @@ function charizardListener(
   function pulse(insidePropanecommand) {
       //let n = parseInt(insidePropanecommand, 10)/2;
       let n = parseInt(insidePropanecommand, 10);
+      if (n < 10){
+        n = 10
+      } else if (n < 1 ){
+        n = 1
+      }
       pulses +=
       console.log(n);
       console.log('pulses');
