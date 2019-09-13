@@ -56,7 +56,7 @@ function charizardListener(
       } else if (isNaN(n)){
         n = 1
       }
-      pulses +=
+      pulses = pulses + 1
       console.log(n);
       console.log('pulses');
       console.log(pulses);
