@@ -49,7 +49,10 @@ function charizardListener(
   function pulse(insidePropanecommand) {
       //let n = parseInt(insidePropanecommand, 10)/2;
       let n = parseInt(insidePropanecommand, 10);
+      pulses +=
       console.log(n);
+      console.log('pulses');
+      console.log(pulses);
       insidePropane.writeSync(1);
       sleep.msleep(n);
       insidePropane.writeSync(0);
@@ -59,6 +62,7 @@ function charizardListener(
   let run = true;
 
   while (run = true){
+    let pulses = 0
     pulse(insidePropanecommand);
   }
 
