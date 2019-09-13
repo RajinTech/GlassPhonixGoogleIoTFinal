@@ -33,11 +33,11 @@ var pulses = 0
 var pulseSpeed = 1
 while(true){
   console.log('while loop')
-  n = 9
+  let m = 9
   insidePropane.writeSync(1);
-  sleep.msleep(n);
+  sleep.msleep(m);
   insidePropane.writeSync(0);
-  sleep.msleep(n);
+  sleep.msleep(m);
 }
 function charizardListener(
 ) {
