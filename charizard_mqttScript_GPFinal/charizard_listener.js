@@ -30,6 +30,15 @@ const insidePropane = new gpio(27, 'out');
 console.log('Welcome! I am listening!');
 
 var pulses = 0
+var pulseSpeed = 1
+while(true){
+  console.log('while loop')
+  n = 9
+  insidePropane.writeSync(1);
+  sleep.msleep(n);
+  insidePropane.writeSync(0);
+  sleep.msleep(n);
+}
 function charizardListener(
 ) {
     // Creates a client
@@ -69,7 +78,7 @@ function charizardListener(
 
   let run = true;
 
-    pulse(insidePropanecommand);
+    //pulse(insidePropanecommand);
 
 
     console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
