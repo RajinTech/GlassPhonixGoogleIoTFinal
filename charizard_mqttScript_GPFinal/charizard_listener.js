@@ -29,6 +29,7 @@ const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
+var pulses = 0
 function charizardListener(
 ) {
     // Creates a client
@@ -46,7 +47,6 @@ function charizardListener(
 
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
-  var pulses = 0
   function pulse(insidePropanecommand) {
       //let n = parseInt(insidePropanecommand, 10)/2;
       let n = parseInt(insidePropanecommand, 10);
