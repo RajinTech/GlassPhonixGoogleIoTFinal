@@ -32,7 +32,7 @@ console.log('Welcome! I am listening!');
 var pulses = 0;
 var pulseSpeed = 1;
 var run = false;
-while(run = true){
+while(run === true){
   console.log('while loop')
   let m = 9
   insidePropane.writeSync(1);
