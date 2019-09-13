@@ -60,9 +60,8 @@ function charizardListener(
   };
 
   let run = true;
-
+  let pulses = 0
   while (run = true){
-    let pulses = 0
     pulse(insidePropanecommand);
   }
 
