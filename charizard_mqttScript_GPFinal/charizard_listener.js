@@ -61,24 +61,10 @@ function charizardListener(
 
   let run = true;
   var pulses = 0
-  while (run = true){
+
     pulse(insidePropanecommand);
-  }
-
-  //do{
-  //pulse(insidePropanecommand);}
-// while(on);
 
 
-    // if ((message.data.toString()).endsWith('off')){
-    //   insidePropanecommand = 'off'
-    // } else if ((message.data.toString()).endsWith('on')) {
-    //   insidePropanecommand = 'on'
-    // };
-    // if (insidePropanecommand === 'on') {
-    //   insidePropane.writeSync(1);
-    // } else if (insidePropanecommand === 'off') {
-    //   insidePropane.writeSync(0);}
     console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
 
     console.log(`Received message ${message.id}:`);
