@@ -29,7 +29,7 @@ const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
-function  charizardListener(
+function charizardListener(
 ) {
     // Creates a client
   const pubsub = new PubSub();
@@ -49,15 +49,16 @@ function  charizardListener(
   function pulse(insidePropanecommand) {
       //let n = parseInt(insidePropanecommand, 10)/2;
       let n = parseInt(insidePropanecommand, 10);
+      console.log(n);
       insidePropane.writeSync(1);
       sleep.msleep(n);
       insidePropane.writeSync(0);
       sleep.msleep(n);
   };
 
-  let sleepPeriod = 200;
+  let run = true;
 
-  for(var i = 0; i < sleepPeriod; i++){
+  while (run = true){
     pulse(insidePropanecommand);
   }
 

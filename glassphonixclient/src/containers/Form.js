@@ -143,7 +143,7 @@ class Form extends Component {
               name="insidePropane"
               onChange={this.handleChange}
               value={this.state.insidePropane}
-              max="99"
+              max="9"
             />
             <div>
               <h5 className="slider-name" >{this.state.insidePropane} insidePropane</h5>
