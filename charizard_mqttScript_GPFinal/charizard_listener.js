@@ -53,6 +53,8 @@ function charizardListener(
         n = 10
       } else if (n < 1 ){
         n = 1
+      } else if (isNaN(n)){
+        n = 1
       }
       pulses +=
       console.log(n);
