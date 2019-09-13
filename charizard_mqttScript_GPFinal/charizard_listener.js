@@ -29,9 +29,10 @@ const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
-var pulses = 0
-var pulseSpeed = 1
-while(true){
+var pulses = 0;
+var pulseSpeed = 1;
+var runn = false;
+while(run = true){
   console.log('while loop')
   let m = 9
   insidePropane.writeSync(1);
