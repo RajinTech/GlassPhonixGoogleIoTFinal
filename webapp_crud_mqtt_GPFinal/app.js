@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const path = require('path');
+const cors = require('cors');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
@@ -32,12 +33,15 @@ const app = express();
 
 app.disable('etag');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'html');
 app.set('trust proxy', true);
 
 // Add the request logger before anything else so that it can
 // accurately log requests.
 app.use(logging.requestLogger);
+
+//Enable Cross-Origin Resource Sharing
+app.use(cors());
 
 // Configure the session and session storage.
 const sessionConfig = {

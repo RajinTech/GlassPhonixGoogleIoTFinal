@@ -130,12 +130,14 @@ function listBy(userId, limit, token, cb) {
 // queued for background processing.
 // [START update]
 function update(id, data, queueBook, cb) {
-  console.log(`books function update data`);
+  console.log(`2)books/model-ds function update`);
 
   let key;
   if (id) {
+    console.log(`3) we have id ${id}`);
     key = ds.key([kind, parseInt(id, 10)]);
   } else {
+    console.log(`3) we have no id`);
     key = ds.key(kind);
   }
 
@@ -146,11 +148,14 @@ function update(id, data, queueBook, cb) {
 
   ds.save(entity, err => {
     if (err) {
+      console.log(`4)we have an error in model datastore update function`);
       cb(err);
       return;
     }
     data.id = entity.key.id;
     if (queueBook) {
+      console.log(`4)we have queud a book`);
+
       background.queueBook(data.id);
     }
     cb(null, data);

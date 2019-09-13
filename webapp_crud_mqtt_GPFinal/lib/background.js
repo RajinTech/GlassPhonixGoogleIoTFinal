@@ -57,7 +57,7 @@ function queueBook(bookId) {
       if (err) {
         logging.error('Error occurred while queuing background task', err);
       } else {
-        logging.info(`Book ${bookId} queued for background processing`);
+        logging.info(`6) background.js Book ${bookId} queued for background processing`);
       }
     });
   });

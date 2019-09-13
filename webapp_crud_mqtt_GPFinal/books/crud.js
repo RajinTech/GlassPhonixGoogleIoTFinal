@@ -102,8 +102,8 @@ router.post(
   (req, res, next) => {
 
     const data = req.body;
-
-
+    console.log(`1)books/crud router.post data.json before `)
+    console.log(data);
 
     // If the user is logged in, set them as the creator of the book.
     if (req.user) {
@@ -112,6 +112,8 @@ router.post(
     } else {
       data.createdBy = 'Anonymous';
     }
+    console.log(`1.1)data after adding createdBy and createdById:`);
+    console.log(data)
 
     // Was an image uploaded? If so, we'll use its public URL
     // in cloud storage.
@@ -125,10 +127,12 @@ router.post(
         next(err);
         return;
       }
-      console.log(`router post books crud data: saved data:`);
-      console.log(data);
-      console.log(savedData.led);
+      console.log(`5)books/crud router.post data:`);
+      console.log(data)
+      console.log(`5.1)books/crud router.post saved data:`);
+      console.log(savedData);
       console.log(`publish from here`)
+      //res.redirect(`${req.baseUrl}/${savedData.id}`);
 
 
 
