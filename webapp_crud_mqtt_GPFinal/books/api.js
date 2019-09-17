@@ -93,6 +93,8 @@ router.post('/', (req, res, next) => {
 
 
 
+if (data.realtime === "2"){
+
 
 
     //start pubsub
@@ -377,7 +379,7 @@ router.post('/', (req, res, next) => {
 
 
 
-
+}
 
 
 

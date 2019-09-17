@@ -18,11 +18,15 @@ class Form extends Component {
       outsideOxygen: "",
       imageUrl: "",
       ready:"",
+      realtime: "",
+      listening: "No",
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
     this.printState = this.printState.bind(this)
     this.printReady = this.printReady.bind(this)
+    this.toggleListen = this.toggleListen.bind(this)
+    this.updateTitle = this.updateTitle.bind(this)
 
 
   }
@@ -47,7 +51,7 @@ class Form extends Component {
     })
       .then(response => {
         if (response.ok) {
-          this.props.gatherState(formPayload)
+          //this.props.gatherState(formPayload)
           return response;
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
@@ -60,8 +64,14 @@ class Form extends Component {
         //browserRouter.push(`/books`);
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-
   }
+
+
+   updateTitle(finalTranscript){
+     this.setState({
+       title: this.props.finalTranscript
+     });
+   }
 
   printState(){
     console.log(this.state)
@@ -71,6 +81,21 @@ class Form extends Component {
       return("No")
     } else if (state === "2"){
       return ("Yes")
+    }
+  }
+
+  toggleListen(){
+    if (this.state.listening === "No"){
+      console.log(`toggleListen`)
+      this.props.startListening();
+      this.setState({ listening: "Yes"})
+    } else if (this.state.listening === "Yes"){
+      this.props.stopListening();
+      this.setState({
+        listening: "No"
+      });
+
+      console.log(`after submit ${this.state.title}`)
     }
   }
 
@@ -88,7 +113,7 @@ class Form extends Component {
     })
       .then(response => {
         if (response.ok) {
-          this.props.gatherState(formPayload)
+          //this.props.gatherState(formPayload)
           return response;
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
@@ -105,6 +130,7 @@ class Form extends Component {
 
 
   render(){
+
 
 
     return(
@@ -130,13 +156,33 @@ class Form extends Component {
               onChange={this.handleChange}
               value={this.state.device}
             />
-
+            <div>
+              <h5 className="slider-name" >See Changes in Real Time? {this.printReady(this.state.realtime)} </h5>
+          </div>
+            <RangeField
+              label="RealTime"
+              name="realtime"
+              onChange={this.handleChange}
+              value={this.state.realtime}
+              max="2"
+            />
+          <div>
+            <button onClick={this.toggleListen}>Start Listening</button>
+            <button onClick={this.toggleListen}>Stop Listening</button>
+            <button onClick={this.updateTitle}>Submit Command</button>
+            <button onClick={this.props.resetTranscript}>Reset</button>
+            <span>Listening: {this.state.listening} </span>
+            <span>{this.props.interimTranscript}</span>
+            <span>{this.props.finalTranscript}</span>
+          </div>
 
             <TextTile
               label="Command"
               name="title"
               onChange={this.handleChange}
               value={this.state.title}
+              content={this.state.title}
+              placeholder={this.state.title}
             />
 
 
@@ -180,6 +226,10 @@ class Form extends Component {
             <div>
               <h5 className="slider-name" >{this.state.outsideOxygen} outsideOxygen</h5>
             </div>
+
+            <div>
+              <h5 className="slider-name" >Ready? {this.printReady(this.state.ready)} </h5>
+          </div>
             <RangeField
               label="Ready"
               name="ready"
@@ -187,9 +237,6 @@ class Form extends Component {
               value={this.state.ready}
               max="2"
             />
-            <div>
-              <h5 className="slider-name" >Ready? {this.printReady(this.state.ready)} </h5>
-            </div>
 
 
         <input className="button" type="submit" value="Submit New Listing"/>
