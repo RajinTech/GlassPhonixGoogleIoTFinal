@@ -17,8 +17,8 @@ class Form extends Component {
       outsidePropane: "",
       outsideOxygen: "",
       imageUrl: "",
-      ready:"",
-      realtime: "",
+      ready: "1",
+      realtime: "1",
       listening: "No",
     }
     this.handleChange = this.handleChange.bind(this);

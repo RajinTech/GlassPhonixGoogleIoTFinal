@@ -30,20 +30,7 @@ const Dictaphone = ({
   if (!browserSupportsSpeechRecognition) {
     return null;
   }
-  // CHECK FOR LISTENING
-  let listeningText = 'No'
-  if (listening === true){
-    console.log(`listening: ${listening}`)
-    let listeningText = 'Yes'
-  } else{
-    console.log(`listening: ${listening}`)
-  }
 
-  //CHECK FOR DONE TRANSCRIBING AND SEND DATA TO PARENT
-  // if (finalTranscript){
-  //   console.log(`done transcribing finalTranscript: ${finalTranscript}`);
-  //   debugger;
-  // }
 
   return (
     <div>
