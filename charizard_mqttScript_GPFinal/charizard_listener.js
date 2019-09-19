@@ -102,7 +102,6 @@ function charizardListener(
   if (insidePropanecommand =='2'){
     console.log(`high`)
     insidePropane.writeSync(1);
-    sleep.msleep(1000);
   } else if ( insidePropanecommand =='1'){
     console.log(`low`)
 
