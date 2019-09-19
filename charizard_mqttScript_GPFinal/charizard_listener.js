@@ -34,6 +34,9 @@ console.log('Welcome! I am listening!');
 let stopBlinking = false;
 
 let insidePropanecommand = ""
+let insideOxygencommand = ""
+let outsidePropanecommand = ""
+let outsideOxygencommand = ""
 
 const blinkinsidePropane = () => {
 
@@ -71,12 +74,18 @@ function charizardListener(
   const messageHandler = message => {
 
     insidePropanecommand = parseFloat(message.data.toString().substr(32, 2))/10;
+    insideOxygencommand = parseFloat(message.data.toString().substr(37, 2))/10;
+    outsidePropanecommand = parseFloat(message.data.toString().substr(42, 2))/10;
+    outsideOxygencommand = parseFloat(message.data.toString().substr(47, 2))/10;
 
 
 
 
     console.log(`${isNaN(insidePropanecommand)}`);
     console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
+    console.log(`\tinsideOxygencommand: ${insideOxygencommand}`);
+    console.log(`\toutsidePropanecommand: ${outsidePropanecommand}`);
+    console.log(`\toutsideOxygencommand: ${outsideOxygencommand}`);
 
     console.log(`Received message ${message.id}:`);
     console.log(`\tData: ${message.data}`);
