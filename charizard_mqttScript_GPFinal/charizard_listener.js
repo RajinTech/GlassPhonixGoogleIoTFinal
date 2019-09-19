@@ -38,25 +38,25 @@ let insideOxygencommand = ""
 let outsidePropanecommand = ""
 let outsideOxygencommand = ""
 
-const blinkinsidePropane = () => {
+const runFlame = (line, lineCommand) => {
 
   if (stopBlinking) {
-    return insidePropane.unexport();
+    return line.unexport();
   }
 
-  insidePropane.read((err, value) => { // Asynchronous read
+  line.read((err, value) => { // Asynchronous read
     if (err) {
       throw err;
     }
 
-    insidePropane.write(value ^ 1, err => { // Asynchronous write
+    line.write(value ^ 1, err => { // Asynchronous write
       if (err) {
         throw err;
       }
     });
   });
 
-  setTimeout(blinkinsidePropane, insidePropanecommand);
+  setTimeout(runFlame, lineCommand);
 };
 
 
@@ -108,5 +108,5 @@ function charizardListener(
   // }
   // [END iot_mqtt_run]
 }
-blinkinsidePropane();
+runFlame(insidePropane, insidePropanecommand);
 charizardListener();
