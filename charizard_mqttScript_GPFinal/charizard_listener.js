@@ -62,6 +62,8 @@ function charizardListener(
 
     let ip = message.data.toString();
     let insidePropanecommand = ip.substr(32, 2);
+    console.log(insidePropanecommand)
+    //let insidePropanecommand = 255;
 
     insidePropane.pwmWrite(insidePropanecommand);
 
