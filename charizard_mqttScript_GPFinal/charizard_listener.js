@@ -46,7 +46,7 @@ function charizardListener(
   const messageHandler = message => {
 
     let ip = message.data.toString();
-    insidePropanecommand = ip.substr(32, 1);
+    insidePropanecommand = ip.substr(32, 2).toFixed(1);
 
 
 
