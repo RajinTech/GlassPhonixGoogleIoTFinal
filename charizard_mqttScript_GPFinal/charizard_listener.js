@@ -51,7 +51,7 @@ function charizardListener(
 
 
 
-    console.log(`${isNAN(insidePropanecommand)}`);
+    console.log(`${isNaN(insidePropanecommand)}`);
     console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
 
     console.log(`Received message ${message.id}:`);
