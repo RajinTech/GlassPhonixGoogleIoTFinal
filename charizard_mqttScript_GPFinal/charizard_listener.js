@@ -79,6 +79,46 @@ const runInsideOxygen = () => {
 
   setTimeout(runInsideOxygen, insideOxygencommand);
 };
+const runOutsidePropane = () => {
+
+  if (stopBlinking) {
+    return outsidePropane.unexport();
+  }
+
+  outsidePropane.read((err, value) => { // Asynchronous read
+    if (err) {
+      throw err;
+    }
+
+    outsidePropane.write(value ^ 1, err => { // Asynchronous write
+      if (err) {
+        throw err;
+      }
+    });
+  });
+
+  setTimeout(runOutsidePropane, outsidePropanecommand);
+};
+const runOutsideOxygen = () => {
+
+  if (stopBlinking) {
+    return outsideOxygen.unexport();
+  }
+
+  outsideOxygen.read((err, value) => { // Asynchronous read
+    if (err) {
+      throw err;
+    }
+
+    outsideOxygen.write(value ^ 1, err => { // Asynchronous write
+      if (err) {
+        throw err;
+      }
+    });
+  });
+
+  setTimeout(runOutsideOxygen, outsideOxygencommand);
+};
 
 
 
@@ -131,4 +171,6 @@ function charizardListener(
 }
 runInsidePropane();
 runInsideOxygen();
+runOutsidePropane();
+runOutsideOxygen();
 charizardListener();
