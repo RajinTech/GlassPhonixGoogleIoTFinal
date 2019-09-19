@@ -82,7 +82,7 @@ function charizardListener(
 
   let run = true;
 
-    //pulse(insidePropanecommand);
+    pulse(insidePropanecommand);
 
 
 
