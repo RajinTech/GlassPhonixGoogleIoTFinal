@@ -1,5 +1,6 @@
 const Gpio = require('onoff').Gpio; // Gpio class
 const insidePropane = new Gpio(27, 'out');       // Export GPIO27 as an output
+let stopBlinking = false;
 
 
 // Toggle the state of the insidePropane connected to GPIO17 every 200ms
@@ -18,7 +19,7 @@ const blinkinsidePropane = () => {
   } else if (dutyCycle == 0){
     direction = 'up'
   }
-  
+
   console.log(direction)
   console.log(dutyCycle)
   //begin
