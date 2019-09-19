@@ -29,9 +29,9 @@ const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
-var pulses = 0;
-var pulseSpeed = 1;
-var run = false;
+// var pulses = 0;
+// var pulseSpeed = 1;
+// var run = false;
 // while(run === true){
 //   console.log('while loop')
 //   let m = 9
@@ -57,33 +57,33 @@ function charizardListener(
 
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
-  function pulse(insidePropanecommand) {
-      console.log(`insidePropanecommand ${insidePropanecommand}`)
-      let n = parseInt(insidePropanecommand, 10);
-      console.log(`n b4: ${n}`);
-
-      if (n > 10){
-        n = 10
-      } else if (n < 1 ){
-        n = 1
-      } else if (isNaN(n)){
-        n = 1
-      }
-      console.log(`n after: ${n}`);
-      pulses = pulses + 1
-      console.log(n);
-      console.log('pulses');
-      console.log(pulses);
-      insidePropane.writeSync(1);
-      sleep.msleep(n);
-      insidePropane.writeSync(0);
-      sleep.msleep(n);
-  };
-
-  let run = true;
-
-    pulse(insidePropanecommand);
-
+  // function pulse(insidePropanecommand) {
+  //     console.log(`insidePropanecommand ${insidePropanecommand}`)
+  //     let n = parseInt(insidePropanecommand, 10);
+  //     console.log(`n b4: ${n}`);
+  //
+  //     if (n > 10){
+  //       n = 10
+  //     } else if (n < 1 ){
+  //       n = 1
+  //     } else if (isNaN(n)){
+  //       n = 1
+  //     }
+  //     console.log(`n after: ${n}`);
+  //     pulses = pulses + 1
+  //     console.log(n);
+  //     console.log('pulses');
+  //     console.log(pulses);
+  //     insidePropane.writeSync(1);
+  //     sleep.msleep(n);
+  //     insidePropane.writeSync(0);
+  //     sleep.msleep(n);
+  // };
+  //
+  // let run = true;
+  //
+  //   //pulse(insidePropanecommand);
+  //
 
 
     console.log(`Received message ${message.id}:`);
