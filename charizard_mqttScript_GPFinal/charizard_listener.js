@@ -22,12 +22,10 @@ const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
 const sleep = require('sleep');
 const {PubSub} = require('@google-cloud/pubsub');
-//Pi
-const Gpio = require('pigpio').Gpio;
-const insidePropane = new Gpio(27, {mode: Gpio.OUTPUT});
-const insideOxygen = new Gpio(25, {mode: Gpio.OUTPUT});
-const outsidePropane = new Gpio(23, {mode: Gpio.OUTPUT});
-const outsideOxygen = new Gpio(24, {mode: Gpio.OUTPUT});
+const outsidePropane = new gpio(23, 'out');
+const outsideOxygen = new gpio(24, 'out');
+const insideOxygen = new gpio(25, 'out');
+const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
@@ -42,12 +40,6 @@ while(run === true){
   insidePropane.writeSync(0);
   sleep.msleep(m);
 }
-
-
-
-
-
-
 function charizardListener(
 ) {
     // Creates a client
@@ -60,15 +52,8 @@ function charizardListener(
   let messageCount = 0;
   const messageHandler = message => {
 
-    // let ip = message.data.toString();
-    // let insidePropanecommand = ip.substr(32, 2);
-    // console.log(insidePropanecommand)
-    // let insidePropanecommand = 255;
-    //
-    // insidePropane.pwmWrite(insidePropanecommand);
-
-
-
+    let ip = message.data.toString();
+    let insidePropanecommand = ip.substr(32, 2);
 
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
@@ -92,9 +77,9 @@ function charizardListener(
       sleep.msleep(n);
   };
 
-   let run = true;
+  let run = true;
 
-    pulse(insidePropanecommand);
+    //pulse(insidePropanecommand);
 
 
     console.log(`\tinsidePropanecommand: ${insidePropanecommand}`);
