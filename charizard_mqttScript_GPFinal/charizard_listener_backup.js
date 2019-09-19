@@ -60,7 +60,7 @@ function charizardListener(
   function pulse(insidePropanecommand) {
       console.log(`insidePropanecommand ${insidePropanecommand}`)
       let n = parseInt(insidePropanecommand, 10);
-      console.log(`\tn b4: ${n}`);
+      console.log(`n b4: ${n}`);
 
       if (n > 10){
         n = 10
@@ -69,7 +69,7 @@ function charizardListener(
       } else if (isNaN(n)){
         n = 1
       }
-      console.log(`\tn after: ${n}`);
+      console.log(`n after: ${n}`);
       pulses = pulses + 1
       console.log(n);
       console.log('pulses');
