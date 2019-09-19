@@ -14,7 +14,7 @@ const blinkinsidePropane = () => {
     dutyCycle -= 5;
   }
   //toggle direction
-  if (dutyCycle == 100) {
+  if (dutyCycle == 200) {
     direction = 'down';
   } else if (dutyCycle == 0){
     direction = 'up'
