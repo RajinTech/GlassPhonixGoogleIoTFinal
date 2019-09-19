@@ -10,8 +10,8 @@ let direction = 'up'
 setInterval(() => {
   insidePropane.pwmWrite(dutyCycle);
   insideOxygen.pwmWrite(dutyCycle);
-  outsidePropane.pwmWrite(dutyCycle);
-  outsideOxygen.pwmWrite(dutyCycle);
+  //outsidePropane.pwmWrite(dutyCycle);
+  //outsideOxygen.pwmWrite(dutyCycle);
 
   console.log(dutyCycle)
   if (direction === 'up'){
@@ -26,5 +26,5 @@ setInterval(() => {
   } else if (dutyCycle == 0){
     direction = 'up'
   }
-  
+
 }, 100);
