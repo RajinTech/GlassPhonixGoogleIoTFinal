@@ -36,7 +36,6 @@ let stopBlinking = false;
 let insidePropanecommand = ""
 
 const blinkinsidePropane = () => {
-  console.log(`blink func insidePropanecommand: ${insidePropanecommand}`)
 
   if (stopBlinking) {
     return insidePropane.unexport();
