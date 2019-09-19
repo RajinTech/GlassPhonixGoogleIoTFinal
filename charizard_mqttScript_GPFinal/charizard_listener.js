@@ -130,4 +130,5 @@ function charizardListener(
   // [END iot_mqtt_run]
 }
 runInsidePropane();
+runInsideOxygen();
 charizardListener();
