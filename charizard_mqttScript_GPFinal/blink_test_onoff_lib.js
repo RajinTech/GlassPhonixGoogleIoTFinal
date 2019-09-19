@@ -9,17 +9,17 @@ let direction = 'up'
 const ramp = () => {
   //ramp
   if (direction === 'up'){
-    dutyCycle += 5;
+    dutyCycle += 1;
   } else if ( direction === 'down'){
-    dutyCycle -= 5;
+    dutyCycle -= 1;
   }
   //toggle direction
-  if (dutyCycle == 100) {
+  if (dutyCycle == 10) {
     direction = 'down';
   } else if (dutyCycle == 0){
     direction = 'up'
   }
-  setTimeout(ramp, 1000)
+  setTimeout(ramp, 2000)
 }
 const blinkinsidePropane = () => {
 
