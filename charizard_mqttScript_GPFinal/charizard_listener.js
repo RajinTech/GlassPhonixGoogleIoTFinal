@@ -42,7 +42,7 @@ console.log('Welcome! I am listening!');
 //   insidePropane.writeSync(0);
 //   sleep.msleep(m);
 // }
-
+let insidePropanecommand = ""
 function charizardListener(
 ) {
     // Creates a client
@@ -56,16 +56,9 @@ function charizardListener(
   const messageHandler = message => {
 
     let ip = message.data.toString();
-    let insidePropanecommand = ip.substr(32, 1);
+    insidePropanecommand = ip.substr(32, 1);
 
-    if (insidePropanecommand =='2'){
-      console.log(`high`)
-      insidePropane.writeSync(1);
-    } else if ( insidePropanecommand =='1'){
-      console.log(`low`)
 
-      insidePropane.writeSync(0);
-    }
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
   // function pulse(insidePropanecommand) {
@@ -106,6 +99,14 @@ function charizardListener(
 
   // Listen for new messages until timeout is hit
   subscription.on(`message`, messageHandler);
+  if (insidePropanecommand =='2'){
+    console.log(`high`)
+    insidePropane.writeSync(1);
+  } else if ( insidePropanecommand =='1'){
+    console.log(`low`)
+
+    insidePropane.writeSync(0);
+  }
   // [END iot_mqtt_run]
 }
 
