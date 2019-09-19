@@ -6,16 +6,25 @@ const outsidePropane = new Gpio(23, {mode: Gpio.OUTPUT});
 const outsideOxygen = new Gpio(24, {mode: Gpio.OUTPUT});
 
 let dutyCycle = 0;
-
+let direction = 'up'
 setInterval(() => {
   insidePropane.pwmWrite(dutyCycle);
   insideOxygen.pwmWrite(dutyCycle);
   outsidePropane.pwmWrite(dutyCycle);
   outsideOxygen.pwmWrite(dutyCycle);
 
-  dutyCycle += 5;
   console.log(dutyCycle)
-  if (dutyCycle > 255) {
-    dutyCycle = 0;
+  if (direction === 'up'){
+    dutyCycle += 5;
+  } else if ( direction === 'down'){
+    dutyCycle -= 5;
   }
-}, 1000);
+
+
+  if (dutyCycle == 255) {
+    direction = 'down';
+  } else if (dutyCycle == 0){
+    direction = 'up'
+  }
+  
+}, 100);
