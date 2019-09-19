@@ -20,7 +20,7 @@ const blinkinsidePropane = () => {
     });
   });
 
-  setTimeout(blinkinsidePropane, 200);
+  setTimeout(blinkinsidePropane, 20);
 };
 
 blinkinsidePropane();
