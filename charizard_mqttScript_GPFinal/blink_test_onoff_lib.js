@@ -6,7 +6,7 @@ let stopBlinking = false;
 // Toggle the state of the insidePropane connected to GPIO17 every 200ms
 let dutyCycle = 0;
 let direction = 'up'
-const blinkinsidePropane = () => {
+const ramp = () => {
   //ramp
   if (direction === 'up'){
     dutyCycle += 5;
@@ -14,11 +14,15 @@ const blinkinsidePropane = () => {
     dutyCycle -= 5;
   }
   //toggle direction
-  if (dutyCycle == 200) {
+  if (dutyCycle == 100) {
     direction = 'down';
   } else if (dutyCycle == 0){
     direction = 'up'
   }
+  setTimeout(ramp, 1000)
+}
+const blinkinsidePropane = () => {
+
 
   console.log(direction)
   console.log(dutyCycle)
@@ -42,5 +46,5 @@ const blinkinsidePropane = () => {
 
   setTimeout(blinkinsidePropane, dutyCycle);
 };
-
+ramp();
 blinkinsidePropane();
