@@ -1,4 +1,4 @@
-const Gpio = require('../onoff').Gpio; // Gpio class
+const Gpio = require('onoff').Gpio; // Gpio class
 const insidePropane = new Gpio(27, 'out');       // Export GPIO17 as an output
 let stopBlinking = false;
 
