@@ -14,6 +14,7 @@ setInterval(() => {
   outsideOxygen.pwmWrite(dutyCycle);
 
   dutyCycle += 5;
+  console.log(dutyCycle)
   if (dutyCycle > 255) {
     dutyCycle = 0;
   }
