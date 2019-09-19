@@ -22,24 +22,32 @@ const mqtt = require('mqtt');
 const gpio = require('onoff').Gpio;
 const sleep = require('sleep');
 const {PubSub} = require('@google-cloud/pubsub');
-const outsidePropane = new gpio(23, 'out');
-const outsideOxygen = new gpio(24, 'out');
-const insideOxygen = new gpio(25, 'out');
-const insidePropane = new gpio(27, 'out');
+//Pi
+const Gpio = require('pigpio').Gpio;
+const insidePropane = new Gpio(27, {mode: Gpio.OUTPUT});
+const insideOxygen = new Gpio(25, {mode: Gpio.OUTPUT});
+const outsidePropane = new Gpio(23, {mode: Gpio.OUTPUT});
+const outsideOxygen = new Gpio(24, {mode: Gpio.OUTPUT});
 
 console.log('Welcome! I am listening!');
 
-var pulses = 0;
-var pulseSpeed = 1;
-var run = false;
-while(run === true){
-  console.log('while loop')
-  let m = 9
-  insidePropane.writeSync(1);
-  sleep.msleep(m);
-  insidePropane.writeSync(0);
-  sleep.msleep(m);
-}
+// var pulses = 0;
+// var pulseSpeed = 1;
+// var run = false;
+// while(run === true){
+//   console.log('while loop')
+//   let m = 9
+//   insidePropane.writeSync(1);
+//   sleep.msleep(m);
+//   insidePropane.writeSync(0);
+//   sleep.msleep(m);
+// }
+
+
+
+
+
+
 function charizardListener(
 ) {
     // Creates a client
@@ -55,29 +63,34 @@ function charizardListener(
     let ip = message.data.toString();
     let insidePropanecommand = ip.substr(32, 2);
 
+    insidePropane.pwmWrite(insidePropanecommand);
+
+
+
+
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
-  function pulse(insidePropanecommand) {
-      //let n = parseInt(insidePropanecommand, 10)/2;
-      let n = parseInt(insidePropanecommand, 10);
-      if (n > 10){
-        n = 10
-      } else if (n < 1 ){
-        n = 1
-      } else if (isNaN(n)){
-        n = 1
-      }
-      pulses = pulses + 1
-      console.log(n);
-      console.log('pulses');
-      console.log(pulses);
-      insidePropane.writeSync(1);
-      sleep.msleep(n);
-      insidePropane.writeSync(0);
-      sleep.msleep(n);
-  };
+  // function pulse(insidePropanecommand) {
+  //     //let n = parseInt(insidePropanecommand, 10)/2;
+  //     let n = parseInt(insidePropanecommand, 10);
+  //     if (n > 10){
+  //       n = 10
+  //     } else if (n < 1 ){
+  //       n = 1
+  //     } else if (isNaN(n)){
+  //       n = 1
+  //     }
+  //     pulses = pulses + 1
+  //     console.log(n);
+  //     console.log('pulses');
+  //     console.log(pulses);
+  //     insidePropane.writeSync(1);
+  //     sleep.msleep(n);
+  //     insidePropane.writeSync(0);
+  //     sleep.msleep(n);
+  // };
 
-  let run = true;
+  // let run = true;
 
     //pulse(insidePropanecommand);
 
