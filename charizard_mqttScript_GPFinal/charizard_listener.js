@@ -56,7 +56,7 @@ function charizardListener(
   const messageHandler = message => {
 
     let ip = message.data.toString();
-    let insidePropanecommand = ip.substr(32, 3);
+    let insidePropanecommand = ip.substr(32, 1);
     if (insidePropanecommand ==='2'){
       insidePropane.writeSync(1);
     } else if ( insidePropanecommand ==='1'){
