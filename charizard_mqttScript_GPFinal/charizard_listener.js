@@ -31,6 +31,7 @@ const insidePropane = new gpio(27, 'out');
 
 console.log('Welcome! I am listening!');
 
+let stopBlinking = false;
 
 let insidePropanecommand = ""
 
