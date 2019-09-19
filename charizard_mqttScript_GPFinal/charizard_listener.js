@@ -33,6 +33,31 @@ console.log('Welcome! I am listening!');
 
 
 let insidePropanecommand = ""
+
+const blinkinsidePropane = () => {
+  console.log(`blink func insidePropanecommand: ${insidePropanecommand}`)
+
+  if (stopBlinking) {
+    return insidePropane.unexport();
+  }
+
+  insidePropane.read((err, value) => { // Asynchronous read
+    if (err) {
+      throw err;
+    }
+
+    insidePropane.write(value ^ 1, err => { // Asynchronous write
+      if (err) {
+        throw err;
+      }
+    });
+  });
+
+  setTimeout(blinkinsidePropane, insidePropanecommand);
+};
+
+
+
 function charizardListener(
 ) {
     // Creates a client
@@ -75,5 +100,5 @@ function charizardListener(
   // }
   // [END iot_mqtt_run]
 }
-
- charizardListener();
+blinkinsidePropane();
+charizardListener();
