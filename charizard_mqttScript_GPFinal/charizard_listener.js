@@ -42,6 +42,7 @@ console.log('Welcome! I am listening!');
 //   insidePropane.writeSync(0);
 //   sleep.msleep(m);
 // }
+
 function charizardListener(
 ) {
     // Creates a client
@@ -56,7 +57,11 @@ function charizardListener(
 
     let ip = message.data.toString();
     let insidePropanecommand = ip.substr(32, 3);
-
+    if (insidePropanecommand ==='2'){
+      insidePropane.writeSync(1);
+    } else if ( insidePropanecommand ==='1'){
+      insidePropane.writeSync(0);
+    }
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
   // function pulse(insidePropanecommand) {
