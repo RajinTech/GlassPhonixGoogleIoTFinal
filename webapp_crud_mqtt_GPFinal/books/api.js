@@ -179,7 +179,7 @@ if (data.realtime === "2"){
       }
 
       setTimeout(() => {
-        const payload = `${registryId}/${deviceId}-payload-IP${data.insidePropane} -time:${data.date}`;
+        const payload = `${registryId}/${deviceId}-payload-IP${data.insidePropane}-IO${data.insideOxygen}-OP${data.outsidePropane}-OO${data.outsideOxygen} -time:${data.date}`;
 
         // Publish "payload" to the MQTT topic. qos=1 means at least once delivery.
         // Cloud IoT Core also supports qos=0 for at most once delivery.

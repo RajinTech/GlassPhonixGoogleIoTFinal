@@ -34,27 +34,30 @@ console.log('Welcome! I am listening!');
 let stopBlinking = false;
 
 let insidePropanecommand = ""
+let insideOxygencommand = ""
+let outsidePropanecommand = ""
+let outsideOxygencommand = ""
 
-const blinkinsidePropane = () => {
-  console.log(`blink func insidePropanecommand: ${insidePropanecommand}`)
+const runFlame = (line, flowRate) => {
+  console.log(`blink func flowRate: ${flowRate}`)
 
   if (stopBlinking) {
-    return insidePropane.unexport();
+    return line.unexport();
   }
 
-  insidePropane.read((err, value) => { // Asynchronous read
+  line.read((err, value) => { // Asynchronous read
     if (err) {
       throw err;
     }
 
-    insidePropane.write(value ^ 1, err => { // Asynchronous write
+    line.write(value ^ 1, err => { // Asynchronous write
       if (err) {
         throw err;
       }
     });
   });
 
-  setTimeout(blinkinsidePropane, insidePropanecommand);
+  setTimeout(runFlame, flowRate);
 };
 
 
@@ -101,5 +104,8 @@ function charizardListener(
   // }
   // [END iot_mqtt_run]
 }
-blinkinsidePropane();
+runFlame(insidePropane);
+runFlame(insideOxygen);
+runFlame(outsidePropane);
+runFlame(outsideOxygen);
 charizardListener();
