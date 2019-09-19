@@ -71,9 +71,8 @@ function charizardListener(
   let messageCount = 0;
   const messageHandler = message => {
 
-    let ip = message.data.toString();
-    insidePropanecommand = ip.substr(32, 2);
-    insidePropanecommand = parseFloat(insidePropanecommand)/10;
+    insidePropanecommand = parseFloat(message.data.toString().substr(32, 2))/10;
+
 
 
 
