@@ -53,7 +53,7 @@ function charizardListener(
   const messageHandler = message => {
 
     let ip = message.data.toString();
-    let insidePropanecommand = ip.substr(32, 2);
+    let insidePropanecommand = ip.substr(32, 3);
 
     // Toggle the state of the LED connected to GPIO17 every 200ms
 
