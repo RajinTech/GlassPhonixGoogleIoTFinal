@@ -47,7 +47,7 @@ function charizardListener(
 
     let ip = message.data.toString();
     insidePropanecommand = ip.substr(32, 2);
-    insidePropanecommand = parseFloat(insidePropanecommand);
+    insidePropanecommand = parseFloat(insidePropanecommand)/10;
 
 
 
