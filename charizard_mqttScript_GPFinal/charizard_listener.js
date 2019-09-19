@@ -104,8 +104,8 @@ function charizardListener(
   // }
   // [END iot_mqtt_run]
 }
-runFlame(insidePropane);
-runFlame(insideOxygen);
-runFlame(outsidePropane);
-runFlame(outsideOxygen);
+runFlame(insidePropane, insidePropanecommand);
+// runFlame(insideOxygen);
+// runFlame(outsidePropane);
+// runFlame(outsideOxygen);
 charizardListener();
