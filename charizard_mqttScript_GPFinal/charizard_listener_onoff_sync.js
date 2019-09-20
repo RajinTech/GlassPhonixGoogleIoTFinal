@@ -34,15 +34,27 @@ let insideOxygencommand = ""
 let outsidePropanecommand = ""
 let outsideOxygencommand = ""
 
-const led = new Gpio(27, 'out');       // Export GPIO17 as an output
+const insidePropane = new Gpio(27, 'out');       // Export GPIO17 as an output
+const insideOxygen = new Gpio(25, 'out');       // Export GPIO17 as an output
+const outsidePropane = new Gpio(23, 'out');       // Export GPIO17 as an output
+const outsideOxygen = new Gpio(24, 'out');       // Export GPIO17 as an output
 
 // Toggle the state of the LED connected to GPIO17 every 200ms
-const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 3.5);
+const ip = setInterval(_ => insidePropane.writeSync(insidePropane.readSync() ^ 1), 3.5);
+const io = setInterval(_ => insideOxygen.writeSync(insidePropane.readSync() ^ 1), 3.5);
+const op = setInterval(_ => outsidePropane.writeSync(insidePropane.readSync() ^ 1), 3.5);
+const oo = setInterval(_ => outsideOxygen.writeSync(insidePropane.readSync() ^ 1), 3.5);
 
 // Stop blinking the LED after 5 seconds
 setTimeout(_ => {
-  clearInterval(iv); // Stop blinking
-  led.unexport();    // Unexport GPIO and free resources
+  clearInterval(ip); // Stop blinking
+  clearInterval(io); // Stop blinking
+  clearInterval(op); // Stop blinking
+  clearInterval(oo); // Stop blinking
+  insidePropane.unexport();    // Unexport GPIO and free resources
+  insideOxygen.unexport();    // Unexport GPIO and free resources
+  outsidePropane.unexport();    // Unexport GPIO and free resources
+  outsideOxygen.unexport();    // Unexport GPIO and free resources
 }, 10000);
 
 function charizardListener(
