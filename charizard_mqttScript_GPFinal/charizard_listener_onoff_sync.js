@@ -74,7 +74,7 @@ function charizardListener(
     outsidePropanecommand = parseFloat(message.data.toString().substr(42, 2))/10;
     outsideOxygencommand = parseFloat(message.data.toString().substr(47, 2))/10;
 
-    let preData = JSON.parse(message.data.toString().split('@'))
+    let preData = JSON.parse(message.data.toString().split('@')[1])
     console.log(preData)
 
 
