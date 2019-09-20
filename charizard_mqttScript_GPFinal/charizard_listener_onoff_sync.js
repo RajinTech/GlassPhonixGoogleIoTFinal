@@ -38,89 +38,16 @@ let insideOxygencommand = ""
 let outsidePropanecommand = ""
 let outsideOxygencommand = ""
 
-const runInsidePropane = () => {
+const led = new Gpio(27, 'out');       // Export GPIO17 as an output
 
-  if (stopBlinking) {
-    return insidePropane.unexport();
-  }
+// Toggle the state of the LED connected to GPIO17 every 200ms
+const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 20);
 
-  insidePropane.read((err, value) => { // Asynchronous read
-    if (err) {
-      throw err;
-    }
-
-    insidePropane.write(value ^ 1, err => { // Asynchronous write
-      if (err) {
-        throw err;
-      }
-    });
-  });
-
-  setTimeout(runInsidePropane, insidePropanecommand);
-};
-
-const runInsideOxygen = () => {
-
-  if (stopBlinking) {
-    return insideOxygen.unexport();
-  }
-
-  insideOxygen.read((err, value) => { // Asynchronous read
-    if (err) {
-      throw err;
-    }
-
-    insideOxygen.write(value ^ 1, err => { // Asynchronous write
-      if (err) {
-        throw err;
-      }
-    });
-  });
-
-  setTimeout(runInsideOxygen, insideOxygencommand);
-};
-const runOutsidePropane = () => {
-
-  if (stopBlinking) {
-    return outsidePropane.unexport();
-  }
-
-  outsidePropane.read((err, value) => { // Asynchronous read
-    if (err) {
-      throw err;
-    }
-
-    outsidePropane.write(value ^ 1, err => { // Asynchronous write
-      if (err) {
-        throw err;
-      }
-    });
-  });
-
-  setTimeout(runOutsidePropane, outsidePropanecommand);
-};
-const runOutsideOxygen = () => {
-
-  if (stopBlinking) {
-    return outsideOxygen.unexport();
-  }
-
-  outsideOxygen.read((err, value) => { // Asynchronous read
-    if (err) {
-      throw err;
-    }
-
-    outsideOxygen.write(value ^ 1, err => { // Asynchronous write
-      if (err) {
-        throw err;
-      }
-    });
-  });
-
-  setTimeout(runOutsideOxygen, outsideOxygencommand);
-};
-
-
+// Stop blinking the LED after 5 seconds
+setTimeout(_ => {
+  clearInterval(iv); // Stop blinking
+  led.unexport();    // Unexport GPIO and free resources
+}, 5000);
 
 function charizardListener(
 ) {
@@ -169,8 +96,5 @@ function charizardListener(
   // }
   // [END iot_mqtt_run]
 }
-runInsidePropane();
-runInsideOxygen();
-runOutsidePropane();
-runOutsideOxygen();
+
 charizardListener();
