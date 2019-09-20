@@ -74,6 +74,9 @@ function charizardListener(
     outsidePropanecommand = parseFloat(message.data.toString().substr(42, 2))/10;
     outsideOxygencommand = parseFloat(message.data.toString().substr(47, 2))/10;
 
+    let preData = message.data.toString().split('-')
+    console.log(preData)
+
 
 
 
