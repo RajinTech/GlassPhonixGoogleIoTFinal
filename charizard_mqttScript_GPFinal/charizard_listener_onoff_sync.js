@@ -19,7 +19,7 @@
 const fs = require('fs');
 
 const mqtt = require('mqtt');
-const gpio = require('onoff').Gpio;
+const Gpio = require('onoff').Gpio;
 const sleep = require('sleep');
 const {PubSub} = require('@google-cloud/pubsub');
 //pi
