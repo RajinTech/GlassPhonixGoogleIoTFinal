@@ -37,13 +37,13 @@ let outsideOxygencommand = ""
 const led = new Gpio(27, 'out');       // Export GPIO17 as an output
 
 // Toggle the state of the LED connected to GPIO17 every 200ms
-const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 10);
+const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 3.5);
 
 // Stop blinking the LED after 5 seconds
 setTimeout(_ => {
   clearInterval(iv); // Stop blinking
   led.unexport();    // Unexport GPIO and free resources
-}, 5000);
+}, 10000);
 
 function charizardListener(
 ) {
