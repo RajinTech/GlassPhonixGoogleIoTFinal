@@ -23,11 +23,7 @@ const Gpio = require('onoff').Gpio;
 const sleep = require('sleep');
 const {PubSub} = require('@google-cloud/pubsub');
 //pi
-//const Gpio = require('pigpio').Gpio;
-const outsidePropane = new gpio(23, 'out');
-const outsideOxygen = new gpio(24, 'out');
-const insideOxygen = new gpio(25, 'out');
-const insidePropane = new gpio(27, 'out');
+
 
 console.log('Welcome! I am listening!');
 
