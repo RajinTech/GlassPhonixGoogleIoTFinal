@@ -23,7 +23,7 @@ setInterval(() => {
 
   if (dutyCycle == 255) {
     direction = 'down';
-  } else if (dutyCycle == 0){
+  } else if (dutyCycle == 100){
     direction = 'up'
   }
 
