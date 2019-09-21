@@ -9,7 +9,7 @@ let dutyCycle = 0;
 let direction = 'up'
 setInterval(() => {
   insidePropane.pwmWrite(150);
-  insideOxygen.pwmWrite(150);
+  insideOxygen.pwmWrite(200);
   //outsidePropane.pwmWrite(dutyCycle);
   //outsideOxygen.pwmWrite(dutyCycle);
 
