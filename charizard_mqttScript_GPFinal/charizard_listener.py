@@ -134,14 +134,6 @@ subscription_path = subscriber.subscription_path(
     project_id, subscription_name)
 
 def callback(message):
-    flame = {
-    'IP': '100',
-    'IO': '100',
-    'OP': '100',
-    'OO': '100',
-    }
-
-
 
     mirage = Torch()
 
@@ -150,11 +142,8 @@ def callback(message):
     #print('Received message1: {}'.format(message))
     print("New Cycle")
     print('Received message2: {}'.format(message.data).split('@')[1])
-    flameSettings = ast.listeral_eval(message.data.split('@')[1])
-    flame["IP"] = flameSettings["IP"]
-    flame["IO"] = flameSettings["IO"]
-    flame["OP"] = flameSettings["OP"]
-    flame["OO"] = flameSettings["OO"]
+    flame = ast.listeral_eval(message.data.split('@')[1])
+    print('flameIP', flame['IP'])
 
     message.ack()
 
