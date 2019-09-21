@@ -76,18 +76,6 @@ class Torch:
 
 
 
-flame = {
-'IP': '100',
-'IO': '100',
-'OP': '100',
-'OO': '100',
-}
-
-
-
-mirage = Torch()
-
-mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
 
 
 
@@ -146,6 +134,19 @@ subscription_path = subscriber.subscription_path(
     project_id, subscription_name)
 
 def callback(message):
+    flame = {
+    'IP': '100',
+    'IO': '100',
+    'OP': '100',
+    'OO': '100',
+    }
+
+
+
+    mirage = Torch()
+
+    mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
+
     #print('Received message1: {}'.format(message))
     print("New Cycle")
     print('Received message2: {}'.format(message.data).split('@')[1])
