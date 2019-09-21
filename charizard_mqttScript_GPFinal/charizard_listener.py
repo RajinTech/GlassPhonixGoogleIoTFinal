@@ -77,10 +77,10 @@ class Torch:
 
 
 flame = {
-'inpr_val': '1',
-'inox_val': '1',
-'ospr_val': '1',
-'osox_val': '1',
+'inpr_val': '100',
+'inox_val': '100',
+'ospr_val': '100',
+'osox_val': '100',
 }
 
 
@@ -149,7 +149,11 @@ def callback(message):
     #print('Received message1: {}'.format(message))
     print('Received message2: {}'.format(message.data).split('@')[1])
     flameSettings = ast.listeral_eval(message.data.split('@')[1])
-    print(flameSettings)
+    print("flameSettings")
+    print(flameSettings["IP"])
+    print(flameSettings["IO"])
+    print(flameSettings["OP"])
+    print(flameSettings["OO"])
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
