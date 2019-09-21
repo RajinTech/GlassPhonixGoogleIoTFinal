@@ -1,9 +1,12 @@
-import time
 from gpiozero import PWMLED
-from gpiozero.pins.pigpio import PiGPIOFactory
 from time import sleep
 import RPi.GPIO as GPIO
 from google.cloud import pubsub_v1
+from classes.torch import Torch
+
+mirage = Torch()
+
+mirage.on(1, 1, 1, 1)
 
 project_id = "glassphonix"
 subscription_name = "my-subscription"
@@ -16,6 +19,7 @@ subscription_path = subscriber.subscription_path(
 
 def callback(message):
     print('Received message: {}'.format(message))
+    print('Received message: {}'.format(message.data))
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
