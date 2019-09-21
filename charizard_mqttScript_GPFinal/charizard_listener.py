@@ -6,10 +6,10 @@ from google.cloud import pubsub_v1
 
 class Torch:
                               #TORCH PINS
-    inpr = PWMLED(27, pin_factory=torch)
-    inox = PWMLED(25, pin_factory=torch)
-    ospr = PWMLED(23, pin_factory=torch)
-    osox = PWMLED(24, pin_factory=torch)
+    inpr = PWMLED(27)
+    inox = PWMLED(25)
+    ospr = PWMLED(23)
+    osox = PWMLED(24)
 
     def __init__(self):
         self.data = []
