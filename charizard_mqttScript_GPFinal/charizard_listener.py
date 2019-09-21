@@ -148,7 +148,7 @@ subscription_path = subscriber.subscription_path(
 def callback(message):
     #print('Received message1: {}'.format(message))
     print('Received message2: {}'.format(message.data).split('@')[1])
-    flameSettings = ast.listeral_eval(.format(message.data).split('@')[1])
+    flameSettings = ast.listeral_eval(message.data.split('@')[1])
     print(flameSettings)
     message.ack()
 
