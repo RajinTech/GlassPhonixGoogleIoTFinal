@@ -3,7 +3,7 @@ from gpiozero import PWMLED
 from time import sleep
 import RPi.GPIO as GPIO
 from google.cloud import pubsub_v1
-
+import ast
 
 class Torch:
                               #TORCH PINS
@@ -87,7 +87,7 @@ flame = {
 
 mirage = Torch()
 
-mirage.on(float(flame['inpr_val']), float(flame['inox_val']), float(flame['ospr_val']), float(flame['osox_val']))
+mirage.on(float(flame['inpr_val'])/10, float(flame['inox_val'])/10, float(flame['ospr_val'])/10, float(flame['osox_val'])/10)
 
 
 
@@ -147,7 +147,7 @@ subscription_path = subscriber.subscription_path(
 
 def callback(message):
     #print('Received message1: {}'.format(message))
-    print('Received message2: {}'.format(message.data).split('@')[1])
+    print('Received message2: {}'ast.listeral_eval(.format(message.data).split('@')[1]))
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
