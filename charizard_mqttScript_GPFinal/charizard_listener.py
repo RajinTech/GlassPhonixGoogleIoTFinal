@@ -1,3 +1,4 @@
+import time
 from gpiozero import PWMLED
 from time import sleep
 import RPi.GPIO as GPIO
