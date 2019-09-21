@@ -147,10 +147,9 @@ subscription_path = subscriber.subscription_path(
 
 def callback(message):
     #print('Received message1: {}'.format(message))
+    print("New Cycle")
     print('Received message2: {}'.format(message.data).split('@')[1])
     flameSettings = ast.listeral_eval(message.data.split('@')[1])
-    print('flame', flame)
-    print('flameSettings', flameSettings)
     flame["IP"] = flameSettings["IP"]
     flame["IO"] = flameSettings["IO"]
     flame["OP"] = flameSettings["OP"]
