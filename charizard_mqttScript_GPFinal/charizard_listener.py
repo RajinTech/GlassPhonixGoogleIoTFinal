@@ -152,7 +152,7 @@ def callback(message):
     print('Received message2: {}'.format(message.data).split('@')[1])
 
     flameSettings = ast.listeral_eval(message.data.split('@')[1])['IP']
-    print('flame',flameSettings)
+    print(flameSettings)
     #flame['IP'] = flameSettings['IP']
     #flame['IO'] = flameSettings['IO']
     #flame['OP'] = flameSettings['OP']
