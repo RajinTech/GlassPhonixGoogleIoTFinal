@@ -76,16 +76,18 @@ class Torch:
 
 
 
+flame = {
+'inpr_val': '1',
+'inox_val': '1',
+'ospr_val': '1',
+'osox_val': '1',
+}
 
-inpr_val = 1
-inox_val = 1
-ospr_val = 1
-osox_val = 1
 
 
 mirage = Torch()
 
-mirage.on(inpr_val, inox_val, ospr_val, osox_val)
+mirage.on(flame['inpr_val'], flame['inox_val'], flame['ospr_val'], flame['osox_val'], )
 
 
 
