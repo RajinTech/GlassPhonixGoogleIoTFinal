@@ -151,7 +151,7 @@ def callback(message):
     print('start Cycle')
     #print('Received message2: {}'.format(message.data).split('@')[1])
 
-    flameSettings = message.data.split('@')[1])
+    flameSettings = message.data.split('@')[1]
     print(flameSettings)
     #flame['IP'] = flameSettings['IP']
     #flame['IO'] = flameSettings['IO']
