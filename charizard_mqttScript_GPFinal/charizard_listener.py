@@ -77,17 +77,17 @@ class Torch:
 
 
 flame = {
-'inpr_val': '100',
-'inox_val': '100',
-'ospr_val': '100',
-'osox_val': '100',
+'IP': '100',
+'IO': '100',
+'OP': '100',
+'OO': '100',
 }
 
 
 
 mirage = Torch()
 
-mirage.on(float(flameSettings['IP'])/100, float(flameSettings['IO'])/100, float(flameSettings['OP'])/100, float(flameSettings['OO'])/100)
+mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
 
 
 
@@ -149,11 +149,13 @@ def callback(message):
     #print('Received message1: {}'.format(message))
     print('Received message2: {}'.format(message.data).split('@')[1])
     flameSettings = ast.listeral_eval(message.data.split('@')[1])
-    print("flameSettings")
-    print(flameSettings["IP"])
-    print(flameSettings["IO"])
-    print(flameSettings["OP"])
-    print(flameSettings["OO"])
+    print('flame', flame)
+    print('flameSettings', flameSettings)
+    flame["IP"] = flameSettings["IP"]
+    flame["IO"] = flameSettings["IO"]
+    flame["OP"] = flameSettings["OP"]
+    flame["OO"] = flameSettings["OO"]
+
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
