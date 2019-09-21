@@ -77,12 +77,15 @@ class Torch:
 
 
 
-
+inpr_val = 1
+inox_val = 1
+ospr_val = 1
+osox_val = 1
 
 
 mirage = Torch()
 
-mirage.on(1, 1, 1, 1)
+mirage.on(inpr_val, inox_val, ospr_val, osox_val)
 
 
 
