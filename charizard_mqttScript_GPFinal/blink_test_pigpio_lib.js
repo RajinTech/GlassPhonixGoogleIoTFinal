@@ -8,8 +8,8 @@ const outsideOxygen = new Gpio(24, {mode: Gpio.OUTPUT});
 let dutyCycle = 0;
 let direction = 'up'
 setInterval(() => {
-  insidePropane.pwmWrite(250);
-  insideOxygen.pwmWrite(200);
+  insidePropane.pwmWrite(200);
+  insideOxygen.pwmWrite(250);
   //outsidePropane.pwmWrite(dutyCycle);
   //outsideOxygen.pwmWrite(dutyCycle);
 
