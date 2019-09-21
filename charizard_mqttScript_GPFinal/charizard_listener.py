@@ -110,18 +110,12 @@ class Torch:
 
 
 
-flame = {
-'IP': '100',
-'IO': '100',
-'OP': '100',
-'OO': '100',
-}
 
 
 
 mirage = Torch()
 
-mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
+
 
 
 
@@ -151,16 +145,11 @@ def callback(message):
     print('start Cycle')
     print('Received message2: {}'.format(message.data).split('@')[1])
 
-    flameSettings = ast.literal_eval(message.data.split('@')[1])
+    flame = ast.literal_eval(message.data.split('@')[1])
 
-    print(flameSettings['IP'])
-    #flame['IP'] = flameSettings['IP']
-    #flame['IO'] = flameSettings['IO']
-    #flame['OP'] = flameSettings['OP']
-    #flame['OO'] = flameSettings['OO']
-    #print('flameip', flame['IP'])
+    print(flame)
     print('end cycle')
-
+    mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
