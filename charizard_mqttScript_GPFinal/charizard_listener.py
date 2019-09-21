@@ -148,13 +148,15 @@ def callback(message):
     mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
 
     #print('Received message1: {}'.format(message))
-    print("New Cycle")
-    print('Received message2: {}'.format(message.data).split('@')[1])
+    print('start Cycle')
+    #print('Received message2: {}'.format(message.data).split('@')[1])
     flameSettings = ast.listeral_eval(message.data.split('@')[1])
     flame['IP'] = flameSettings['IP']
     flame['IO'] = flameSettings['IO']
     flame['OP'] = flameSettings['OP']
     flame['OO'] = flameSettings['OO']
+    print('flameip', flame['IP'])
+    print('end cycle')
 
     message.ack()
 
