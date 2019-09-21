@@ -146,7 +146,7 @@ subscription_path = subscriber.subscription_path(
     project_id, subscription_name)
 
 def callback(message):
-    print('Received message1: {}'.format(message))
+    #print('Received message1: {}'.format(message))
     print('Received message2: {}'.format(message.data).split('@')[1])
     message.ack()
 
