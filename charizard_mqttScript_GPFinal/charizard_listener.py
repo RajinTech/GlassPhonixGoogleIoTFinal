@@ -87,7 +87,7 @@ flame = {
 
 mirage = Torch()
 
-mirage.on(float(flame['inpr_val'])/10, float(flame['inox_val'])/10, float(flame['ospr_val'])/10, float(flame['osox_val'])/10)
+mirage.on(float(flame['inpr_val'])/100, float(flame['inox_val'])/100, float(flame['ospr_val'])/100, float(flame['osox_val'])/100)
 
 
 
