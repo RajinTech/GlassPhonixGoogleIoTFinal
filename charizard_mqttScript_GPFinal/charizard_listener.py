@@ -15,7 +15,6 @@ class Torch:
         self.data = []
 
     def on(self, inpr_val, inox_val, ospr_val=0, osox_val=0):
-        torch = self.torch
         inpr = self.inpr
         inox = self.inox
         ospr = self.ospr
@@ -28,7 +27,6 @@ class Torch:
 
 
     def off(self):
-        torch = self.torch
         inpr = self.inpr
         inox = self.inox
         ospr = self.ospr
