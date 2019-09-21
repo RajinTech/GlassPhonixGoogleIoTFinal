@@ -69,14 +69,13 @@ function charizardListener(
   let messageCount = 0;
   const messageHandler = message => {
 
-    //insidePropanecommand = parseFloat(message.data.toString().substr(32, 2))/10;
-    insideOxygencommand = parseFloat(message.data.toString().substr(37, 2))/10;
-    outsidePropanecommand = parseFloat(message.data.toString().substr(42, 2))/10;
-    outsideOxygencommand = parseFloat(message.data.toString().substr(47, 2))/10;
+
 
     let preData = JSON.parse(message.data.toString().split('@')[1])
-    insidePropanecommand = preData.IP
-    console.log(insidePropanecommand)
+    insidePropanecommand = preData.IP/10
+    insideOxygencommand = preData.IO/10
+    outsidePropanecommand = preData.OP/10
+    outsideOxygencommand = preData.OO/10
 
 
 
