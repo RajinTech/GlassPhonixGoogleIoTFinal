@@ -150,12 +150,12 @@ def callback(message):
     print('Received message1: {}'.format(message))
     print('start Cycle')
     #print('Received message2: {}'.format(message.data).split('@')[1])
-    flameSettings = ast.listeral_eval(message.data.split('@')[1])
-    flame['IP'] = flameSettings['IP']
-    flame['IO'] = flameSettings['IO']
-    flame['OP'] = flameSettings['OP']
-    flame['OO'] = flameSettings['OO']
-    print('flameip', flame['IP'])
+    #flameSettings = ast.listeral_eval(message.data.split('@')[1])
+    #flame['IP'] = flameSettings['IP']
+    #flame['IO'] = flameSettings['IO']
+    #flame['OP'] = flameSettings['OP']
+    #flame['OO'] = flameSettings['OO']
+    #print('flameip', flame['IP'])
     print('end cycle')
 
     message.ack()
