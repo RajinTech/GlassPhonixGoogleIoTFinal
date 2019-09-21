@@ -2,7 +2,7 @@ from gpiozero import PWMLED
 from time import sleep
 import RPi.GPIO as GPIO
 from google.cloud import pubsub_v1
-from classes.torch import Torch
+
 
 class Torch:
                               #TORCH PINS
