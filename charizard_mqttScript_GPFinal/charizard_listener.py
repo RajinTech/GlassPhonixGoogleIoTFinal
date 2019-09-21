@@ -144,9 +144,9 @@ subscription_path = subscriber.subscription_path(
     project_id, subscription_name)
 
 def callback(message):
-    print('Received message: {}'.format(message))
-    print('Received message: {}'(message.data))
-    print('Received message: {}'.format(message.data))
+    print('Received message1: {}'.format(message))
+    print('Received message2: {}'(message.data))
+    print('Received message3: {}'.format(message.data))
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
