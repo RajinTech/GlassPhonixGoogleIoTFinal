@@ -145,7 +145,7 @@ subscription_path = subscriber.subscription_path(
 
 def callback(message):
     print('Received message1: {}'.format(message))
-    print('Received message2: {}'.format(message.data))
+    print('Received message2: {}'.format(message.data).split('@')[1])
     message.ack()
 
 subscriber.subscribe(subscription_path, callback=callback)
