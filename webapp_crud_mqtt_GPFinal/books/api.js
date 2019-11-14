@@ -34,6 +34,7 @@ router.use(bodyParser.json());
  * Retrieve a page of books (up to ten at a time).
  */
 router.get('/', (req, res, next) => {
+
   model.list(10, req.query.pageToken, (err, entities, cursor) => {
     if (err) {
       next(err);
@@ -53,17 +54,16 @@ router.get('/', (req, res, next) => {
  */
 router.post('/', (req, res, next) => {
 
-  const data = req.body;
-  console.log(`1) books/api router.post data.json before ${JSON.stringify(data)}`)
+  let data = req.body
 
   // If the user is logged in, set them as the creator of the book.
   if (req.user) {
-    data.createdBy = req.user.displayName;
-    data.createdById = req.user.id;
+    //data.createdBy = req.user.displayName;
+    //data.createdById = req.user.id;
   } else {
-    data.createdBy = 'Anonymous';
+    //data.createdBy = 'Anonymous';
   }
-  console.log(`1.1) books/api router.post data.json after ${JSON.stringify(data)}`)
+  //console.log(`1.1) books/api router.post data.json after ${JSON.stringify(data)}`)
 
 //IMAGE CHECKER HERE
 //PUBLISH HERE
@@ -460,6 +460,9 @@ if (data.realtime === "2"){
  * Retrieve a book.
  */
 router.get('/:book', (req, res, next) => {
+  const data = req.body;
+  console.log(`1) books/api router.get/book data.json ${JSON.stringify(req.params.book)}`)
+
   model.read(req.params.book, (err, entity) => {
     if (err) {
       next(err);
@@ -490,6 +493,9 @@ router.put('/:book', (req, res, next) => {
  * Delete a book.
  */
 router.delete('/:book', (req, res, next) => {
+  const data = req.body;
+  console.log(`1) books/api router.delete data.json ${JSON.stringify(req.body)}`)
+
   model.delete(req.params.book, err => {
     if (err) {
       next(err);

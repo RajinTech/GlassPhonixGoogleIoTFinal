@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router';
 import React from 'react';
 
 const ActionTile = (props) => {
@@ -7,6 +7,7 @@ const ActionTile = (props) => {
     'borderStyle': 'solid',
     'borderColor': 'red',
   };
+
 
   return (
     <div style={divStyle} >
@@ -21,7 +22,10 @@ const ActionTile = (props) => {
 <p>insideOxygen {props.insideOxygen}</p>
       <p>outsidePropane {props.outsidePropane}</p>
     <p>outsideOxygen {props.outsideOxygen}</p>
-<button onClick={props.editAction}>editAction</button>
+  <p>id {props.id}</p>
+<button onClick={() => props.editAction(props.id)}>editAction</button>
+<button onClick={() => props.deleteAction(props.id)}>deleteAction</button>
+
     </div>
 
 

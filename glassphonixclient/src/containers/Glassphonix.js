@@ -10,6 +10,7 @@ export default class Glassphonix extends Component {
     this.state = {
       actions: [],
       action: {},
+      currentAction: "",
       playground: false,
       form: false,
       viewActions: true,
@@ -20,6 +21,7 @@ export default class Glassphonix extends Component {
         this.goToPlayground = this.goToPlayground.bind(this)
         this.viewActions = this.viewActions.bind(this)
         this.editAction = this.editAction.bind(this)
+        this.deleteAction = this.deleteAction.bind(this)
         this.gatherState = this.gatherState.bind(this)
   }
 
@@ -68,14 +70,52 @@ export default class Glassphonix extends Component {
       editAction: false,
     })
   };
-  editAction(){
-    this.setState({
-      form: false,
-      playground: false,
-      viewActions: false,
-      editAction: true,
+
+
+
+
+
+
+
+
+
+  deleteAction(id){
+    let formPayload = id;
+    fetch(`http://localhost:8080/api/books/${id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      body: JSON.stringify(formPayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     })
+      .then(response => {
+        if (response.ok) {
+
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        //browserRouter.push(`/books`);
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
+
+
+
+
+
+
+  editAction() {
+  console.log(`editAction`)
+}
+
 
   gatherState(formPayload){
     this.setState(prevState => ({
@@ -92,6 +132,7 @@ export default class Glassphonix extends Component {
     let actions = this.state.actions.map(action => (
       <ActionTile
         key={action.id}
+        id={action.id}
         title={action.title}
         command={action.command}
         createdBy={action.createdBy}
@@ -104,6 +145,7 @@ export default class Glassphonix extends Component {
         rightDoorPosition={action.rightDoorPosition}
         imageUrl={this.imageCheck(action.imageUrl)}
         editAction={this.editAction}
+        deleteAction={this.deleteAction}
     />
     ));
 
@@ -147,7 +189,16 @@ export default class Glassphonix extends Component {
     return (
       <div className ="container">
         {navBar}
-      <Playground/>
+      <Playground
+      actions={this.state.actions}
+      transcript={this.props.transcript}
+      resetTranscript={this.props.resetTranscript}
+      startListening={this.props.startListening}
+      stopListening={this.props.stopListening}
+      interimTranscript={this.props.interimTranscript}
+      finalTranscript={this.props.finalTranscript}
+      listening={this.props.listening}/>
+
     </div>
     )
   }
