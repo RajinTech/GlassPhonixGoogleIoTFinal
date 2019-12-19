@@ -189,7 +189,7 @@ if (data.realtime === "2"){
 
 
         console.log('Publishing message:', payload);
-        client.publish(mqttTopic, payload, {qos: 1}, err => {
+        client.publish(mqttTopic, payload, {qos: 0}, err => {
           if (!err) {
             shouldBackoff = false;
             backoffTime = MINIMUM_BACKOFF_TIME;
