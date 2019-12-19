@@ -35,7 +35,7 @@ router.use(bodyParser.json());
  */
 router.get('/', (req, res, next) => {
 
-  model.list(10, req.query.pageToken, (err, entities, cursor) => {
+  model.list(10000, req.query.pageToken, (err, entities, cursor) => {
     if (err) {
       next(err);
       return;
@@ -492,11 +492,13 @@ router.put('/:book', (req, res, next) => {
  *
  * Delete a book.
  */
-router.delete('/:book', (req, res, next) => {
-  const data = req.body;
-  console.log(`1) books/api router.delete data.json ${JSON.stringify(req.body)}`)
+router.delete('/', (req, res, next) => {
 
-  model.delete(req.params.book, err => {
+  console.log(`1) books/api router.delete data.json ${req.body}`, JSON.stringify(req.body))
+  const data = req.method;
+  console.log(data);
+
+  model.delete("5126581479538688", err => {
     if (err) {
       next(err);
       return;

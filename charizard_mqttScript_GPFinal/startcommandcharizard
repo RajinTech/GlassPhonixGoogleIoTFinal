@@ -7,3 +7,8 @@
     --privateKeyFile=rsa_private.pem \
     --numMessages=25 \
     --algorithm=RS256
+
+
+    virtualenv env
+    source env/bin/activate
+    export GOOGLE_APPLICATION_CREDENTIALS="/home/pi/Downloads/GlassPhonix-929dd46605aa1.json"

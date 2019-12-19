@@ -22,6 +22,7 @@ export default class Glassphonix extends Component {
         this.viewActions = this.viewActions.bind(this)
         this.editAction = this.editAction.bind(this)
         this.deleteAction = this.deleteAction.bind(this)
+        this.deleteAllAction = this.deleteAllAction.bind(this)
         this.gatherState = this.gatherState.bind(this)
   }
 
@@ -32,7 +33,13 @@ export default class Glassphonix extends Component {
     .then( responseJson=> {
       console.log(responseJson);
       this.setState({ actions:responseJson.items });
-      console.log(this.state.actions[0]);
+      console.log(this.state.actions);
+  
+      this.state.actions.forEach((action) => {
+        if (action.title === "Kamehameha"){
+          console.log(action);
+        }
+      })
     },
   )}
 
@@ -78,13 +85,44 @@ export default class Glassphonix extends Component {
 
 
 
+  deleteAction(book){
+    console.log(JSON.stringify(book));
+    let formPayload = book;
+    fetch(`http://localhost:8080/api/books`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      body: JSON.stringify(formPayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log(response);
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+    //  .then(response => response.json())
+      //.then(body => {
+        //browserRouter.push(`/books`);
+      //})
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  };
 
-  deleteAction(id){
+
+
+  deleteAllAction(){
+    this.state.actions.forEach((action) => {
+    let id = action.id;
     let formPayload = id;
     fetch(`http://localhost:8080/api/books/${id}`, {
       credentials: 'same-origin',
       method: 'DELETE',
-      body: JSON.stringify(formPayload),
+      body: formPayload,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -105,11 +143,8 @@ export default class Glassphonix extends Component {
         //browserRouter.push(`/books`);
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
+    });
   };
-
-
-
-
 
 
   editAction() {
@@ -180,6 +215,7 @@ export default class Glassphonix extends Component {
       return (
         <div className ="container">
           {navBar}
+          <button onClick={this.deleteAllAction}>Delete All</button>
           {actions}
       </div>
       )

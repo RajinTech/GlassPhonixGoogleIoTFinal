@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import React from 'react';
 
 const ActionTile = (props) => {

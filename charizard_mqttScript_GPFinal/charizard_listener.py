@@ -37,98 +37,10 @@ class Torch:
         ospr.value = 0
         osox.value = 0
         print("torch off")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Creates Torch Instance
 mirage = Torch()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Sets Connection Values for Google IoT Core
 project_id = "glassphonix"
 subscription_name = "my-subscription"
 
@@ -146,6 +58,14 @@ def callback(message):
     print('Received message2: {}'.format(message.data).split('@')[1])
 
     flame = ast.literal_eval(message.data.split('@')[1])
+    if float(flame['IP'])/100 >= 100:
+        flame['IP'] = "99"
+    if float(flame['IO'])/100 >= 100:
+        flame['IO'] = "99"
+    if float(flame['OP'])/100 >= 100:
+        flame['OP'] = "99"
+    if float(flame['OO'])/100 >= 100:
+        flame['OO'] = "99"    
 
     print(flame)
     print('end cycle')
