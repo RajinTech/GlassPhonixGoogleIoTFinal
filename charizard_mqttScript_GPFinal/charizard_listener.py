@@ -66,7 +66,7 @@ def callback(message):
         flame['OP'] = "99"
     if float(flame['OO'])/100 >= 100:
         flame['OO'] = "99"
-    if flame['IO'] !== '105':
+    if flame['IO'] != '105':
         print(flame)
         print('end cycle')
         mirage.on(float(flame['IP'])/100, float(flame['IO'])/100, float(flame['OP'])/100, float(flame['OO'])/100)
