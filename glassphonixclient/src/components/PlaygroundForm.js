@@ -86,7 +86,28 @@ class PlaygroundForm extends Component {
     command.insideOxygen = parseInt(command.insideOxygen * 0.9).toString()
     command.outsideOxygen = parseInt(command.outsideOxygen * 0.9).toString()
     console.log("Less Oxy command af", command)
-
+    this.state.command = command;
+  }
+  morePropane(){
+    let command = this.state.command;
+    console.log("More Pro command", command)
+    command.insidePropane = parseInt(command.insidePropane * 1.1).toString()
+    command.outsidePropane = parseInt(command.outsidePropane * 1.1).toString()
+    if( parseInt(command.insidePropane) >= parseInt("99")) {
+      command.insidePropane = "99"
+    };
+    if( parseInt(command.outsidePropane) >= parseInt("99")) {
+      command.outsidePropane = "99"
+    };
+    console.log("More Pro command af", command)
+    this.state.command = command;
+  }
+  lessPropane(){
+    let command = this.state.command;
+    console.log("Less Pro command b4", command)
+    command.insidePropane = parseInt(command.insidePropane * 0.9).toString()
+    command.outsidePropane = parseInt(command.outsidePropane * 0.9).toString()
+    console.log("Less Pro command af", command)
     this.state.command = command;
   }
 
@@ -99,7 +120,7 @@ class PlaygroundForm extends Component {
       description: "For Krillan",
       insidePropane: "59",
       insideOxygen: "99",
-      outsidePropane: "46",
+      outsidePropane: "50",
       outsideOxygen: "99",
       imageUrl: "",
       ready: "1",
@@ -150,6 +171,12 @@ class PlaygroundForm extends Component {
       console.log(this.state.command)
     } else if(this.props.finalTranscript === "less oxygen"){
       this.lessOxygen()
+      console.log(this.state.command)
+    } else  if(this.props.finalTranscript === "more propane" || this.props.finalTranscript === "Moore propane"){
+      this.morePropane()
+      console.log(this.state.command)
+    } else if(this.props.finalTranscript === "less propane"){
+      this.lessPropane()
       console.log(this.state.command)
     } else {
     this.state.command = actions_demo.find(x => x.title === this.props.finalTranscript)
